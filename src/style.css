@@ -1,0 +1,178 @@
+/* loading style */
+.left-puzzle {
+  grid-area: 1 / 1;
+  display: inline-block;
+  transform: rotate(-135deg);
+  animation: lp 1.5s ease-in both;
+}
+@keyframes lp {
+  from {
+    margin-left: -10px;
+  }
+  to {
+    margin-left: calc(50% - 11px);
+  }
+}
+.right-puzzle {
+  grid-area: 1 / 1;
+  display: inline-block;
+  transform: rotate(225deg);
+  animation: rp 1.5s ease-in both;
+}
+@keyframes rp {
+  from {
+    margin-left: 100%;
+  }
+  to {
+    margin-left: calc(50% + 11px);
+  }
+}
+.loading-rotate {
+  animation: lr 1.5s 1.6s linear infinite;
+}
+@keyframes lr {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* rotate token image on token page */
+.rotate-token-logo {
+  animation: logorotation 8s infinite linear;
+}
+
+@keyframes logorotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+
+/* rotate puzzle image on home-header */ 
+.rotate-puzzle:hover img {
+  animation: puzzlerotation 2s 2 linear alternate;
+}
+
+@keyframes puzzlerotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+
+/* header navbar links */
+.header-menu {
+  color: black;
+  text-decoration: none;
+}
+.header-menu:hover {
+	color: #7075e9;
+	text-decoration: underline;
+}
+
+
+/* footer links */
+.footer-link {
+  font-weight: bold; 
+  font-size: 0.85em; 
+  text-decoration: none; 
+  color: #7075e9;
+}
+.footer-link:hover {
+  text-decoration-line: underline;
+}
+
+
+/* stats hover style on home page */
+.home-stats:hover {
+	background-color: #7075e9;
+	color: white;
+}
+
+
+/* error style */
+.error-title {
+  text-align: center;
+  margin-top: 5%;
+  font-family: sans-serif;
+  color: white;
+  text-shadow: 0 0 5px black;
+  animation: error-t 2s ease-in-out forwards;
+}
+@keyframes error-t {
+  to {
+    color: black;
+    text-shadow: none;
+  }
+}
+
+.error-left-puzzle {
+  grid-area: 1 / 1;
+  display: inline-block;
+  transform: rotate(-135deg);
+  animation: 
+    error-lp 1.5s ease-in both, 
+    error-lp-rt 1.5s 6s linear forwards,
+    error-lp-freefall 1s 7.6s ease-in forwards;
+}
+@keyframes error-lp {
+  from {
+    margin-left: -10px;
+  }
+  to {
+    margin-left: calc(50% - 11px);
+  }
+}
+@keyframes error-lp-rt {
+  to {
+    transform: rotate(-225deg);
+  }
+}
+@keyframes error-lp-freefall {
+  to {
+    margin-top: 100%;
+  }
+}
+.error-right-puzzle {
+  grid-area: 1 / 1;
+  display: inline-block;
+  transform: rotate(225deg);
+  animation: 
+    error-rp 1.5s ease-in both, 
+    error-rp-inf 1s 1.7s linear both 4 alternate, 
+    error-rp-rt 1.5s 6s linear forwards,
+    error-rp-freefall 1s 7.6s ease-in forwards;
+}
+@keyframes error-rp {
+  from {
+    margin-left: 100%;
+  }
+  to {
+    margin-left: calc(50% + 41px);
+  }
+}
+@keyframes error-rp-inf {
+  to {
+    margin-left: calc(50% + 81px);
+  }
+}
+@keyframes error-rp-rt {
+  to {
+    transform: rotate(135deg);
+  }
+}
+@keyframes error-rp-freefall {
+  to {
+    margin-top: 100%;
+  }
+}
