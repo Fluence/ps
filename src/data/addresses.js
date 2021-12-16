@@ -1,4 +1,4 @@
-export const apiEndpoint = 'https://nodes.wavesnodes.com/';
+export const apiEndpoint = 'https://nodes.wavesnodes.com';
 export const smartContractAddress = "3PPRHHF9JKvDLkAc3aHD3Kd5tRZp1CoqAJa";
 export const smartContractAddress2 = "3PKYPKJPHZENAAwH9e7TF5edDgukNxxBt3M";
 export const smartContractAddress3 = "3PDrYPF6izza2sXWffzTPF7e2Fcir2CMpki";
