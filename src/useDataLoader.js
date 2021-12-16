@@ -103,8 +103,8 @@ export default function useData() {
 
         //////
 
-        const transactions = await fetch('https://wavesplayground.com/puzzleswap-txs').then(r => r.json());
-        const liquidityAddings = await fetch('https://wavesplayground.com/puzzleswap-lp').then(r => r.json());
+        const transactions = await fetch('https://thinksecurity.nl/puzzleswap-txs').then(r => r.json());
+        const liquidityAddings = await fetch('https://thinksecurity.nl/puzzleswap-lp').then(r => r.json());
 
         await new Promise(r => setTimeout(r, 1000));
         //

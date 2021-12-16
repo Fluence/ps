@@ -106,7 +106,7 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
   useEffect(() => {
     async function getTokenData() {
       try {
-        const fetchedTradingNumbers = await fetch('https://wavesplayground.com/puzzleswap-trades');
+        const fetchedTradingNumbers = await fetch('https://thinksecurity.nl/puzzleswap-trades');
         const tradingNumbers = await fetchedTradingNumbers.json();
         const tradingDates = Object.keys(tradingNumbers).map(tradingDate => {
           let yearIndex = tradingDate.indexOf('.', 3);
@@ -121,7 +121,7 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
         setHistorical({ tradingDates, tradingNumbersAll, tradingNumbersPool1, tradingNumbersPool2, tradingNumbersPool3 });
 
 
-        const fetchedVolumeNumbers = await fetch('https://wavesplayground.com/puzzleswap-volumes');
+        const fetchedVolumeNumbers = await fetch('https://thinksecurity.nl/puzzleswap-volumes');
         const volumeNumbers = await fetchedVolumeNumbers.json();
         const volumeDates = Object.keys(volumeNumbers).map(volumeDate => {
           let yearIndex = volumeDate.indexOf('.', 3);
