@@ -102,7 +102,8 @@ export default function useData() {
 
 
         //////
-
+        //fetch(`${apiEndpoint}/assets/balance/${smartContractAddress}`).then(r => r.json()),
+        //const transactions = await fetch(`${apiEndpoint}/transactions/address/${smartContractAddress}/limit/50`).then(r => r.json());
         const transactions = await fetch('https://thinksecurity.nl/puzzleswap-txs').then(r => r.json());
         const liquidityAddings = await fetch('https://thinksecurity.nl/puzzleswap-lp').then(r => r.json());
 
