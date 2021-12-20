@@ -173,7 +173,7 @@ function App() {
               <Header />
 
               <PuzzleLink className="rotate-puzzle">
-                <span style={{fontSize: '0.8rem', paddingRight: '1rem', paddingLeft: '-1rem', color: 'red'}}>doesn't reflect any changes after 2.12.2021</span>
+                {/* <span style={{fontSize: '0.8rem', paddingRight: '1rem', paddingLeft: '-1rem', color: 'red'}}>doesn't reflect any changes after 2.12.2021</span> */}
                 <a href="https://puzzleswap.org/" style={{fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: '0.8rem', color: '#7075e9'}}>
                   <img src={images.puzzleswap} alt="puzzle swap" width="15px" height="15px" />puzzleswap
                 </a>
