@@ -121,7 +121,7 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
         setHistorical({ tradingDates, tradingNumbersAll, tradingNumbersPool1, tradingNumbersPool2, tradingNumbersPool3 });
 
 
-        const fetchedVolumeNumbers = await fetch('../data/puzzleswap-volumes');
+        const fetchedVolumeNumbers = await fetch('https://wavesplaygroud.com/puzzleswap-volumes');
         const volumeNumbers = await fetchedVolumeNumbers.json();
         const volumeDates = Object.keys(volumeNumbers).map(volumeDate => {
           let yearIndex = volumeDate.indexOf('.', 3);
