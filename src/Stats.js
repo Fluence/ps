@@ -106,7 +106,7 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
   useEffect(() => {
     async function getTokenData() {
       try {
-        const fetchedTradingNumbers = await fetch('../data/puzzleswap-trades');
+        const fetchedTradingNumbers = await fetch('https://wavesplayground.com/puzzleswap-trades');
         const tradingNumbers = await fetchedTradingNumbers.json();
         const tradingDates = Object.keys(tradingNumbers).map(tradingDate => {
           let yearIndex = tradingDate.indexOf('.', 3);
