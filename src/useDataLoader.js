@@ -104,8 +104,8 @@ export default function useData() {
         //////
         //fetch(`${apiEndpoint}/assets/balance/${smartContractAddress}`).then(r => r.json()),
         //const transactions = await fetch(`${apiEndpoint}/transactions/address/${smartContractAddress}/limit/50`).then(r => r.json());
-        const transactions = await fetch('https://github.com/Fluence/ps/blob/feeabae18e84fd9ab32227b2a5de7ef5203e8453/src/data/puzzleswap-txs').then(r => r.json());
-        const liquidityAddings = await fetch('https://github.com/Fluence/ps/blob/feeabae18e84fd9ab32227b2a5de7ef5203e8453/src/data/puzzleswap-lp').then(r => r.json());
+        const transactions = await fetch('https://data.puzzlepedia.com/puzzleswap-txs').then(r => r.json());
+        const liquidityAddings = await fetch('https://data.puzzlepedia.com/puzzleswap-lp').then(r => r.json());
 
         await new Promise(r => setTimeout(r, 1000));
         //
