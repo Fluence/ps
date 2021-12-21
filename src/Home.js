@@ -185,7 +185,7 @@ export function Home({data, tradesInLastTwentyFourHours}) {
       </StatsTitle>
 
       <StatsInfo>
-        Number of trades: {tradesInLastTwentyFourHours.number}
+        Number of trades: {tradesInLastTwentyFourHours.number} <i>updates every ~5 minutes</i>
       </StatsInfo>
 
       <StatsGroupedInfoLeft>
