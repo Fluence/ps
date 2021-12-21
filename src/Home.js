@@ -180,12 +180,12 @@ export function Home({data, tradesInLastTwentyFourHours}) {
     
     
       <StatsTitle className="rotate-puzzle">
-        <img src={images.puzzleswap} alt="Puzzleswap" width="16px" height="16px" />
+        <img src={images.puzzleswap} alt="puzzle swap" width="16px" height="16px" />
         <span style={{marginLeft: '4px'}}>Exchange stats | Last 24 hours</span>
       </StatsTitle>
 
       <StatsInfo>
-        Number of trades: {tradesInLastTwentyFourHours.number} 
+        Number of trades: {tradesInLastTwentyFourHours.number}
       </StatsInfo>
 
       <StatsGroupedInfoLeft>
@@ -223,7 +223,7 @@ export function Home({data, tradesInLastTwentyFourHours}) {
 
       <StatsGroupedInfoRight>
         <div>
-          <span style={{fontWeight: '600', fontSize: '0.95rem'}}>Most traded tokens: </span>
+          <span style={{fontWeight: '600', fontSize: '0.95rem'}}>most traded tokens: </span>
         </div>
         <ul
           style={{
@@ -273,8 +273,8 @@ export function Home({data, tradesInLastTwentyFourHours}) {
       <TokenBalance>
 
         <TokenBalanceTitle className="rotate-puzzle">
-          <img src={images.puzzleswap} alt="Puzzleswap" width="16px" height="16px" />
-          <span style={{marginLeft: '4px'}}>Token balances</span>
+          <img src={images.puzzleswap} alt="puzzle swap" width="16px" height="16px" />
+          <span style={{marginLeft: '4px'}}>token balances</span>
         </TokenBalanceTitle>
 
 
