@@ -181,16 +181,16 @@ export function Home({data, tradesInLastTwentyFourHours}) {
     
       <StatsTitle className="rotate-puzzle">
         <img src={images.puzzleswap} alt="puzzle swap" width="16px" height="16px" />
-        <span style={{marginLeft: '4px'}}>Exchange stats | Last 24 hours</span>
+        <span style={{marginLeft: '4px'}}>exchange stats | last 24 hours</span>
       </StatsTitle>
 
       <StatsInfo>
-        Number of trades: {tradesInLastTwentyFourHours.number}
+        number of trades: {tradesInLastTwentyFourHours.number}
       </StatsInfo>
 
       <StatsGroupedInfoLeft>
         <div>
-          <span style={{fontWeight: '600', fontSize: '0.95rem'}}>Most traded pairs: </span>
+          <span style={{fontWeight: '600', fontSize: '0.95rem'}}>most traded pairs: </span>
         </div>
         <ul
           style={{
