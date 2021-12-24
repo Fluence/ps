@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react';
 
 import { BigNumber } from 'bignumber.js';
 
-import { apiEndpoint, smartContractAddress, farmTokenAddresses, farmTokenAddresses2, smartContractAddress2, farm2TokenAddresses, farm2TokenAddresses2, smartContractAddress3, farm3TokenAddresses, farm3TokenAddresses2, smartContractAddress4, farm4TokenAddresses, farm4TokenAddresses2, tokenDecimals, tokenDecimalsId } from './data/addresses.js';
+import { apiEndpoint, smartContractAddress, farmTokenAddresses, farmTokenAddresses2, smartContractAddress2, farm2TokenAddresses, farm2TokenAddresses2, smartContractAddress3, farm3TokenAddresses, farm3TokenAddresses2, smartContractAddress4, farm4TokenAddresses, farm4TokenAddresses2, smartContractAddress5, farm5TokenAddresses, farm5TokenAddresses2, tokenDecimals, tokenDecimalsId } from './data/addresses.js';
 
 const tokenNames = Object.keys(farmTokenAddresses);
 const tokenAddresses = Object.values(farmTokenAddresses);
 const tokenAddresses2 = Object.values(farm2TokenAddresses);
 const tokenAddresses3 = Object.values(farm3TokenAddresses);
 const tokenAddresses4 = Object.values(farm4TokenAddresses);
+const tokenAddresses5 = Object.values(farm5TokenAddresses);
 
 function helperForInAndOutAmount(amount, asset) {
   const digit = tokenDecimals[asset];
@@ -39,12 +40,16 @@ export default function useData() {
             fetch(`${apiEndpoint}/assets/balance/${smartContractAddress}`).then(r => r.json()),
             fetch(`${apiEndpoint}/assets/balance/${smartContractAddress2}`).then(r => r.json()),
             fetch(`${apiEndpoint}/assets/balance/${smartContractAddress3}`).then(r => r.json()),
+            //get list of puzzle holders
             fetch(`${apiEndpoint}/addresses/balance/${smartContractAddress3}`).then(r => r.json()),
+            //get balance of parent puzzle pool
             fetch(`${apiEndpoint}/assets/balance/${smartContractAddress4}`).then(r => r.json()),
+            //get balance of race pool
+            fetch(`${apiEndpoint}/assets/balance/${smartContractAddress5}`).then(r => r.json()),
           ]);
         }
 
-        const [allAssetsInContract, allAssetsInContract2, allAssetsInContract3, wavesInContract3, allAssetsInContract4] = await fetchFarmBalances();
+        const [allAssetsInContract, allAssetsInContract2, allAssetsInContract3, wavesInContract3, allAssetsInContract4, allAssetsInContract5] = await fetchFarmBalances();
 
         const farmOneBalances = [];
 
@@ -85,10 +90,18 @@ export default function useData() {
           }
         });
 
+        const farmFiveBalances = [];
+
+        allAssetsInContract5.balances.forEach(asset => {
+          if(tokenAddresses5.includes(asset.assetId)) {
+            return farmFiveBalances.push({ name: farm5TokenAddresses2[asset.assetId], balance: asset.balance / 10**tokenDecimalsId[asset.assetId] });
+          }
+        });
+
         
 
         let contractBalance = {};
-        [...farmOneBalances, ...farmTwoBalances, ...farmThreeBalances, ...farmFourBalances].forEach(asset => {
+        [...farmOneBalances, ...farmTwoBalances, ...farmThreeBalances, ...farmFourBalances, ...farmFiveBalances].forEach(asset => {
           if(contractBalance[asset.name] == undefined) {
             contractBalance[asset.name] = asset.balance;
           } else {
@@ -101,9 +114,10 @@ export default function useData() {
         });
 
 
-        //////
+        
         //fetch(`${apiEndpoint}/assets/balance/${smartContractAddress}`).then(r => r.json()),
         //const transactions = await fetch(`${apiEndpoint}/transactions/address/${smartContractAddress}/limit/50`).then(r => r.json());
+    
         const transactions = await fetch('https://data.puzzlepedia.cc/puzzleswap-txs').then(r => r.json());
         const liquidityAddings = await fetch('https://data.puzzlepedia.cc/puzzleswap-lp').then(r => r.json());
 
