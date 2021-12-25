@@ -117,7 +117,11 @@ export default function useData() {
         
         //fetch(`${apiEndpoint}/assets/balance/${smartContractAddress}`).then(r => r.json()),
         //const transactions = await fetch(`${apiEndpoint}/transactions/address/${smartContractAddress}/limit/50`).then(r => r.json());
-    
+        //curl -X 'GET' \
+        //'https://nodes.wavesnodes.com/transactions/address/3PNK5ypnPJioLmLUzfK6ezpaePHLxZd6QLj/limit/250?after=2WxGZc25m2pcX1eC8qzSjoaxTeH2avsNEbwVgcBHHKJb' \
+        //-H 'accept: application/json'
+
+
         const transactions = await fetch('https://data.puzzlepedia.cc/puzzleswap-txs').then(r => r.json());
         const liquidityAddings = await fetch('https://data.puzzlepedia.cc/puzzleswap-lp').then(r => r.json());
 
