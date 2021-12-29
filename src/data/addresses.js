@@ -67,7 +67,7 @@ export const farm2TokenAddresses2 = {
   '46PdJcKzDuYfzLuLNjffM3F8jR8hL357V9AdGK2xN3kx': 'forklog',
 };
 
-//
+//defi pool
 
 export const farm3TokenAddresses = {
   'WAVES': 'waves',
@@ -95,8 +95,7 @@ export const farm3TokenAddresses2 = {
   'Ehie5xYpeN8op1Cctc6aGUrqx8jq3jtf1DSjXDbfm7aT': 'swop',
 };
 
-//
-
+//puzzle parent pool
 export const farm4TokenAddresses = {
   usdn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
   usdt: '34N9YcEETLWn93qYQ64EsP1x89tSruJU44RrEMSXXEPJ',
@@ -108,6 +107,7 @@ export const farm4TokenAddresses2 = {
   'HEB8Qaw9xrWpWs8tHsiATYGBWDBtP2S7kcPALrMu43AS': 'puzzle',
 };
 
+//race pool
 export const farm5TokenAddresses = {
   usdn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
   egg: 'C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS',
@@ -147,6 +147,7 @@ export const allFarmTokenAddresses = {
   sign: '9sQutD5HnRvjM1uui5cVC4w9xkMPAfYEV8ymug3Mon2Y',
   vires: 'DSbbhLsSTeDg5Lsiufk2Aneh3DjVqJuPr2M9uU1gwy5p',
   swop: 'Ehie5xYpeN8op1Cctc6aGUrqx8jq3jtf1DSjXDbfm7aT',
+  race: 'D4TPjtzpsDEJFS1pUAkvh1tJJJMNWGcSrds9sveBoQka',
   puzzle: 'HEB8Qaw9xrWpWs8tHsiATYGBWDBtP2S7kcPALrMu43AS'
 };
 
