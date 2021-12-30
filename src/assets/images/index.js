@@ -26,6 +26,7 @@ import sign from './sign.svg';
 import vires from './vires.svg';
 import swop from './swop.svg';
 import waves from './waves.svg';
+import race from './race.svg';
 import puzzle from './puzzle.png';
 
 
@@ -58,5 +59,6 @@ export {
   vires,
   swop,
   waves,
+  race,
   puzzle
 };
