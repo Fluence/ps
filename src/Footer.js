@@ -24,7 +24,7 @@ export function Footer() {
       <li><a className="footer-link" href="https://puzzleswap.org/farms">Farms Pool 1</a></li>
       <li><a className="footer-link" href="https://puzzleswap.org/farms2">Farms Pool 2</a></li>
       <li><a className="footer-link" href="https://puzzleswap.org/defi">Defi</a></li>
-      <li><a className="footer-link" href="https://puzzleswap.org/defi">Race</a></li>
+      <li><a className="footer-link" href="https://puzzleswap.org/Race">Race</a></li>
       <li><a className="footer-link" href="https://puzzleswap.org/puzzle">Puzzle</a></li>
     </HeaderWrapper>
   )

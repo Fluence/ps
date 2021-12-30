@@ -177,8 +177,9 @@ export const tokenDecimals = {
   sign: 8,
   vires: 8,
   swop: 8,
-  puzzle: 8,
-  race: 8
+  race: 8,
+  puzzle: 8
+
 }
 
 export const tokenDecimalsId = {
@@ -231,8 +232,8 @@ export const tokenDecimalsId = {
   'DSbbhLsSTeDg5Lsiufk2Aneh3DjVqJuPr2M9uU1gwy5p': 8,
   //swop
   'Ehie5xYpeN8op1Cctc6aGUrqx8jq3jtf1DSjXDbfm7aT': 8,
-  //puzzle
-  'HEB8Qaw9xrWpWs8tHsiATYGBWDBtP2S7kcPALrMu43AS': 8,
   //race
-  'D4TPjtzpsDEJFS1pUAkvh1tJJJMNWGcSrds9sveBoQka': 8
+  'D4TPjtzpsDEJFS1pUAkvh1tJJJMNWGcSrds9sveBoQka': 8,
+  //puzzle
+  'HEB8Qaw9xrWpWs8tHsiATYGBWDBtP2S7kcPALrMu43AS': 8
 }
