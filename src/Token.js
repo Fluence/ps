@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 
 import * as images from './assets/images';
 
-import { allFarmTokenAddresses, apiEndpoint, smartContractAddress, farmTokenAddresses, farmTokenAddresses2, smartContractAddress2, farm2TokenAddresses, farm2TokenAddresses2, tokenDecimals } from './data/addresses.js';
+import { allFarmTokenAddresses, apiEndpoint, smartContractAddress, farmTokenAddresses, farmTokenAddresses2, smartContractAddress2, farm2TokenAddresses, farm2TokenAddresses2, farm5TokenAddresses, farm5TokenAddresses2, tokenDecimals } from './data/addresses.js';
 
 
 const MainWrapper = styled.div`
