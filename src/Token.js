@@ -229,13 +229,21 @@ export function Token({ data }) {
                           <a href="https://puzzleswap.org/defi" style={{fontWeight: 'bold', fontSize: '0.85em', textDecoration: 'none', color: '#7075e9'}}>defi</a>
                         </Fragment>
                       ) : 
-                      (
+/*                       (
                         <a 
                           href={(Object.keys(farmTokenAddresses).includes(token)) ? `https://puzzleswap.org/farms` : (Object.keys(farm2TokenAddresses).includes(token)) ? `https://puzzleswap.org/farms2` :  `https://puzzleswap.org/defi`} 
                           style={{fontWeight: 'bold', fontSize: '0.85em', textDecoration: 'none', color: '#7075e9'}}
                         >
                           puzzleswap
                         </a>
+                      ) */
+                      (
+                        <a 
+                        href={(Object.keys(farmTokenAddresses).includes(token)) ? `https://puzzleswap.org/farms` : (Object.keys(farm2TokenAddresses).includes(token)) ? `https://puzzleswap.org/farms2` : (Object.keys(farm5TokenAddresses).includes(token)) ? `https://puzzleswap.org/race` : `https://puzzleswap.org/defi`} 
+                        style={{fontWeight: 'bold', fontSize: '0.85em', textDecoration: 'none', color: '#7075e9'}}
+                        >
+                        puzzleswap
+                        </a> 
                       )
                     }
                   </span>
