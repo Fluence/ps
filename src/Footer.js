@@ -21,10 +21,11 @@ const HeaderWrapper = styled.ul`
 export function Footer() {
   return (
     <HeaderWrapper>
-      <li><a className="footer-link" href="https://puzzleswap.org/farms">farms 1</a></li>
-      <li><a className="footer-link" href="https://puzzleswap.org/farms2">farms 2</a></li>
-      <li><a className="footer-link" href="https://puzzleswap.org/defi">defi</a></li>
-      <li><a className="footer-link" href="https://puzzleswap.org/puzzle">puzzle</a></li>
+      <li><a className="footer-link" href="https://puzzleswap.org/farms">Farms Pool 1</a></li>
+      <li><a className="footer-link" href="https://puzzleswap.org/farms2">Farms Pool 2</a></li>
+      <li><a className="footer-link" href="https://puzzleswap.org/defi">Defi</a></li>
+      <li><a className="footer-link" href="https://puzzleswap.org/defi">Race</a></li>
+      <li><a className="footer-link" href="https://puzzleswap.org/puzzle">Puzzle</a></li>
     </HeaderWrapper>
   )
 }
