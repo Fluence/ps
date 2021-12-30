@@ -147,7 +147,7 @@ export function Token({ data }) {
   const tokenTrades = data.transactions.exchange.filter(tx => {
     return tx.from == token || tx.to == token;
   });
-
+{/*this get token details from node*/}
   useEffect(() => {
     let cancelled = false;
     async function getTokenData() {
@@ -217,7 +217,7 @@ export function Token({ data }) {
                 <div style={{gridArea: 'infotitleb'}}>puzzle balance:</div> 
                 <div style={{gridArea: 'infob'}}>{poolBalance}</div>
                 
-
+                {/* In token page check if USDN or EGG then list pools that hold USDN (not including puzzle and race just yet) */}
                 <div style={{gridArea: 'link', display: 'flex', justifyContent: 'space-between'}}>
                   <span>
                     {
@@ -237,7 +237,7 @@ export function Token({ data }) {
                           puzzleswap
                         </a>
                       ) */
-                      (
+                        (
                         <a 
                         href={(Object.keys(farmTokenAddresses).includes(token)) ? `https://puzzleswap.org/farms` : (Object.keys(farm2TokenAddresses).includes(token)) ? `https://puzzleswap.org/farms2` : (Object.keys(farm5TokenAddresses).includes(token)) ? `https://puzzleswap.org/race` : `https://puzzleswap.org/defi`} 
                         style={{fontWeight: 'bold', fontSize: '0.85em', textDecoration: 'none', color: '#7075e9'}}
