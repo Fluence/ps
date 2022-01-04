@@ -291,7 +291,7 @@ export function Liquidity({ liquidityAddings }) {
             pool2StakedIndexBalance = wallet.value;
           }
         });
-
+        
         let pool3WalletIndexBalances = [];
         let pool3WalletClaimedValues = {};
         let pool3StakedIndexBalance;
@@ -412,7 +412,7 @@ export function Liquidity({ liquidityAddings }) {
                   >
                     farms 2
                   </LPStyledList>
-                  <LPStyledList
+{/*                   <LPStyledList
                     onClick={() => {
                       setLpProviderPool('defi');
                       setLpProviderPoolPage(1);
@@ -424,7 +424,7 @@ export function Liquidity({ liquidityAddings }) {
                     }}
                   >
                     DeFi
-                  </LPStyledList>
+                  </LPStyledList> */}
                 </LPPageList>
 
                 <div
