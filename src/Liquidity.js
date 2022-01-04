@@ -197,12 +197,12 @@ function reducer(state, action) {
         pool2ValueInUSDN: action.payload.pool2ValueInUSDN,
         pool2IndexValueInUSDN: action.payload.pool2IndexValueInUSDN,
 
-        pool3GlobalIndexAmount: action.payload.pool3GlobalIndexAmount,
+/*         pool3GlobalIndexAmount: action.payload.pool3GlobalIndexAmount,
         pool3StakedIndexAmount: action.payload.pool3StakedIndexBalance,
         pool3WalletStakedIndexAmounts: action.payload.pool3WalletIndexBalances,
         pool3WalletClaimedValues: action.payload.pool3WalletClaimedValues,
         pool3ValueInUSDN: action.payload.pool3ValueInUSDN,
-        pool3IndexValueInUSDN: action.payload.pool3IndexValueInUSDN,
+        pool3IndexValueInUSDN: action.payload.pool3IndexValueInUSDN */
       }
     case 'FAIL': 
       return {
@@ -292,7 +292,7 @@ export function Liquidity({ liquidityAddings }) {
           }
         });
         
-        let pool3WalletIndexBalances = [];
+/*         let pool3WalletIndexBalances = [];
         let pool3WalletClaimedValues = {};
         let pool3StakedIndexBalance;
         let pool3ValueInUSDN = BigNumber(helperForInAndOutAmount(fetchedpool3USDNBalance.balance, 'usdn')).multipliedBy(10).toString();
@@ -315,7 +315,7 @@ export function Liquidity({ liquidityAddings }) {
           if(wallet.key === 'global_indexStaked') {
             pool3StakedIndexBalance = wallet.value;
           }
-        });
+        }); */
         
         if(!cancelled) {
           dispatch({
@@ -335,12 +335,12 @@ export function Liquidity({ liquidityAddings }) {
               pool2ValueInUSDN: pool2ValueInUSDN,
               pool2IndexValueInUSDN: pool2IndexValueInUSDN,
 
-              pool3GlobalIndexAmount: fetchedpool3GlobalIndexAmount[0].value,
+/*               pool3GlobalIndexAmount: fetchedpool3GlobalIndexAmount[0].value,
               pool3StakedIndexBalance: pool3StakedIndexBalance,
               pool3WalletIndexBalances: pool3WalletIndexBalances.sort((w1, w2) => w2[Object.keys(w2)] - w1[Object.keys(w1)]),
               pool3WalletClaimedValues: pool3WalletClaimedValues,
               pool3ValueInUSDN: pool3ValueInUSDN,
-              pool3IndexValueInUSDN: pool3IndexValueInUSDN
+              pool3IndexValueInUSDN: pool3IndexValueInUSDN */
             }
           })
         }
