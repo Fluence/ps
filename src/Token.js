@@ -147,7 +147,7 @@ export function Token({ data }) {
   const tokenTrades = data.transactions.exchange.filter(tx => {
     return tx.from == token || tx.to == token;
   });
-{/*this get token details from node*/}
+{/*this gets token details from node*/}
   useEffect(() => {
     let cancelled = false;
     async function getTokenData() {

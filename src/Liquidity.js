@@ -189,12 +189,20 @@ function reducer(state, action) {
         pool1WalletClaimedValues: action.payload.pool1WalletClaimedValues,
         pool1ValueInUSDN: action.payload.pool1ValueInUSDN,
         pool1IndexValueInUSDN: action.payload.pool1IndexValueInUSDN,
+
         pool2GlobalIndexAmount: action.payload.pool2GlobalIndexAmount,
         pool2StakedIndexAmount: action.payload.pool2StakedIndexBalance,
         pool2WalletStakedIndexAmounts: action.payload.pool2WalletIndexBalances,
         pool2WalletClaimedValues: action.payload.pool2WalletClaimedValues,
         pool2ValueInUSDN: action.payload.pool2ValueInUSDN,
         pool2IndexValueInUSDN: action.payload.pool2IndexValueInUSDN,
+
+        pool3GlobalIndexAmount: action.payload.pool3GlobalIndexAmount,
+        pool3StakedIndexAmount: action.payload.pool3StakedIndexBalance,
+        pool3WalletStakedIndexAmounts: action.payload.pool3WalletIndexBalances,
+        pool3WalletClaimedValues: action.payload.pool3WalletClaimedValues,
+        pool3ValueInUSDN: action.payload.pool3ValueInUSDN,
+        pool3IndexValueInUSDN: action.payload.pool3IndexValueInUSDN,
       }
     case 'FAIL': 
       return {
@@ -211,6 +219,7 @@ export function Liquidity({ liquidityAddings }) {
   const [lpProviderPool, setLpProviderPool] = useState('pool1');
   const [lpProviderPoolPage, setLpProviderPoolPage] = useState(1);
   
+  /*get info from api about index and rewards for the pools*/
   useEffect(() => {
     let cancelled = false;
     async function getData() {
@@ -225,10 +234,14 @@ export function Liquidity({ liquidityAddings }) {
             fetch(`${apiEndpoint}/addresses/data/${smartContractAddress2}?matches=.%2A_indexStaked`).then(r => r.json()),
             fetch(`${apiEndpoint}/assets/balance/${smartContractAddress2}/DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p`).then(r => r.json()),
             fetch(`${apiEndpoint}/addresses/data/${smartContractAddress2}?matches=.%2A_claimedRewardValue`).then(r => r.json()),
+            fetch(`${apiEndpoint}/addresses/data/${smartContractAddress3}?matches=.%2Aglobal_poolToken_amount`).then(r => r.json()),
+            fetch(`${apiEndpoint}/addresses/data/${smartContractAddress3}?matches=.%2A_indexStaked`).then(r => r.json()),
+            fetch(`${apiEndpoint}/assets/balance/${smartContractAddress3}/DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p`).then(r => r.json()),
+            fetch(`${apiEndpoint}/addresses/data/${smartContractAddress3}?matches=.%2A_claimedRewardValue`).then(r => r.json()),
           ]);
         }
-
-        const [fetchedPool1GlobalIndexAmount, fetchedPool1IndexAmount, fetchedPool1USDNBalance, fetchedPool1ClaimedValues, fetchedPool2GlobalIndexAmount, fetchedPool2IndexAmount, fetchedPool2USDNBalance, fetchedPool2ClaimedValues] = await fetchIndexBalances();
+        /*create construct with all the variables*/
+        const [fetchedPool1GlobalIndexAmount, fetchedPool1IndexAmount, fetchedPool1USDNBalance, fetchedPool1ClaimedValues, fetchedPool2GlobalIndexAmount, fetchedPool2IndexAmount, fetchedPool2USDNBalance, fetchedPool2ClaimedValues, fetchedpool3GlobalIndexAmount, fetchedpool3IndexAmount, fetchedpool3USDNBalance, fetchedpool3ClaimedValues] = await fetchIndexBalances();
         let pool1WalletIndexBalances = [];
         let pool1WalletClaimedValues = {};
         let pool1StakedIndexBalance;
@@ -278,6 +291,31 @@ export function Liquidity({ liquidityAddings }) {
             pool2StakedIndexBalance = wallet.value;
           }
         });
+
+        let pool3WalletIndexBalances = [];
+        let pool3WalletClaimedValues = {};
+        let pool3StakedIndexBalance;
+        let pool3ValueInUSDN = BigNumber(helperForInAndOutAmount(fetchedpool3USDNBalance.balance, 'usdn')).multipliedBy(10).toString();
+        let pool3IndexValueInUSDN = (BigNumber(pool3ValueInUSDN).dividedBy(fetchedpool3GlobalIndexAmount[0].value)).toString();
+        fetchedpool3IndexAmount.forEach(walletIndex => {
+          if(walletIndex.key.length == 47) {
+            if(walletIndex.value === 0) return;
+            pool3WalletIndexBalances.push({[walletIndex.key.slice(0, 35)]: walletIndex.value});
+            return;
+          }
+          if(walletIndex.key === 'global_indexStaked') {
+            pool3StakedIndexBalance = walletIndex.value;
+          }
+        });
+        fetchedpool3ClaimedValues.forEach(wallet => {
+          if(wallet.key.length == 54) {
+            pool3WalletClaimedValues[wallet.key.slice(0, 35)] = helperForInAndOutAmount(wallet.value, 'usdn').toFixed(2);
+            return;
+          }
+          if(wallet.key === 'global_indexStaked') {
+            pool3StakedIndexBalance = wallet.value;
+          }
+        });
         
         if(!cancelled) {
           dispatch({
@@ -295,7 +333,14 @@ export function Liquidity({ liquidityAddings }) {
               pool2WalletIndexBalances: pool2WalletIndexBalances.sort((w1, w2) => w2[Object.keys(w2)] - w1[Object.keys(w1)]),
               pool2WalletClaimedValues: pool2WalletClaimedValues,
               pool2ValueInUSDN: pool2ValueInUSDN,
-              pool2IndexValueInUSDN: pool2IndexValueInUSDN
+              pool2IndexValueInUSDN: pool2IndexValueInUSDN,
+
+              pool3GlobalIndexAmount: fetchedpool3GlobalIndexAmount[0].value,
+              pool3StakedIndexBalance: pool3StakedIndexBalance,
+              pool3WalletIndexBalances: pool3WalletIndexBalances.sort((w1, w2) => w2[Object.keys(w2)] - w1[Object.keys(w1)]),
+              pool3WalletClaimedValues: pool3WalletClaimedValues,
+              pool3ValueInUSDN: pool3ValueInUSDN,
+              pool3IndexValueInUSDN: pool3IndexValueInUSDN
             }
           })
         }
@@ -366,6 +411,19 @@ export function Liquidity({ liquidityAddings }) {
                     }}
                   >
                     farms 2
+                  </LPStyledList>
+                  <LPStyledList
+                    onClick={() => {
+                      setLpProviderPool('defi');
+                      setLpProviderPoolPage(1);
+                    }}
+                    style={{
+                      borderTop: '1px solid #7075e9',
+                      borderBottom: 'none',
+                      width: 'auto'
+                    }}
+                  >
+                    DeFi
                   </LPStyledList>
                 </LPPageList>
 
