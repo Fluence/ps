@@ -234,10 +234,10 @@ export function Liquidity({ liquidityAddings }) {
             fetch(`${apiEndpoint}/addresses/data/${smartContractAddress2}?matches=.%2A_indexStaked`).then(r => r.json()),
             fetch(`${apiEndpoint}/assets/balance/${smartContractAddress2}/DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p`).then(r => r.json()),
             fetch(`${apiEndpoint}/addresses/data/${smartContractAddress2}?matches=.%2A_claimedRewardValue`).then(r => r.json()),
-            fetch(`${apiEndpoint}/addresses/data/${smartContractAddress3}?matches=.%2Aglobal_poolToken_amount`).then(r => r.json()),
-            fetch(`${apiEndpoint}/addresses/data/${smartContractAddress3}?matches=.%2A_indexStaked`).then(r => r.json()),
-            fetch(`${apiEndpoint}/assets/balance/${smartContractAddress3}/DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p`).then(r => r.json()),
-            fetch(`${apiEndpoint}/addresses/data/${smartContractAddress3}?matches=.%2A_claimedRewardValue`).then(r => r.json()),
+            // fetch(`${apiEndpoint}/addresses/data/${smartContractAddress3}?matches=.%2Aglobal_poolToken_amount`).then(r => r.json()),
+            // fetch(`${apiEndpoint}/addresses/data/${smartContractAddress3}?matches=.%2A_indexStaked`).then(r => r.json()),
+            // fetch(`${apiEndpoint}/assets/balance/${smartContractAddress3}/DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p`).then(r => r.json()),
+            // fetch(`${apiEndpoint}/addresses/data/${smartContractAddress3}?matches=.%2A_claimedRewardValue`).then(r => r.json()),
           ]);
         }
         /*create construct with all the variables*/
