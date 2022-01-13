@@ -122,7 +122,7 @@ export default function useData() {
         //-H 'accept: application/json'
 
 
-        const transactions = await fetch('https://data.puzzlepedia.cc/puzzleswap-txs').then(r => r.json());
+        const transactions = await fetch('https://data.puzzlepedia.cc/puzzleswap-txs.json').then(r => r.json());
         const liquidityAddings = await fetch('https://data.puzzlepedia.cc/puzzleswap-lp').then(r => r.json());
 
         await new Promise(r => setTimeout(r, 1000));
