@@ -305,7 +305,7 @@ console.log(tokenData)
               padding: '0.70rem'
             }}
           >
-            485,000 (hard coded) <a href="https://wavesexplorer.com/assets/HEB8Qaw9xrWpWs8tHsiATYGBWDBtP2S7kcPALrMu43AS" style={{color: '#7075e9', fontWeight: 'bold'}}>explorer</a> 
+            479,147 (hard coded) <a href="https://wavesexplorer.com/assets/HEB8Qaw9xrWpWs8tHsiATYGBWDBtP2S7kcPALrMu43AS" style={{color: '#7075e9', fontWeight: 'bold'}}>explorer</a> 
           </div>
         </div>
 
