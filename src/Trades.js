@@ -112,7 +112,7 @@ export function Trades({ data }) {
             setPage(0);
           }}
         >
-          all
+          All
         </TradeFilterList>
         <TradeFilterList
           onClick={() => {
@@ -120,7 +120,7 @@ export function Trades({ data }) {
             setPage(0);
           }}
         >
-          farms 1
+          Farms 1
         </TradeFilterList>
         <TradeFilterList
           onClick={() => {
@@ -128,7 +128,7 @@ export function Trades({ data }) {
             setPage(0);
           }}
         >
-          farms 2
+          Farms 2
         </TradeFilterList>
         <TradeFilterList
           onClick={() => {
@@ -136,7 +136,7 @@ export function Trades({ data }) {
             setPage(0);
           }}
         >
-          defi
+          DeFi
         </TradeFilterList>
         <TradeFilterList
           onClick={() => {
@@ -144,7 +144,7 @@ export function Trades({ data }) {
             setPage(0);
           }}
         >
-          puzzle
+          Race
         </TradeFilterList>
       </ul>
 
