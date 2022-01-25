@@ -93,7 +93,7 @@ const StyledList = styled.li`
 export function Trades({ data }) {
   const [page, setPage] = useState(0);
   const [pool, setPool] = useState('all');
-  let transactions = pool === 'all' ? data.transactions.exchange : pool === 'pool1' ? data.transactions.pool1 : pool === 'pool2' ? data.transactions.pool2 : pool === 'pool3' ? data.transactions.pool3 : pool === 'pool4' ? data.transactions.pool4 : undefined;
+  let transactions = pool === 'all' ? data.transactions.exchange : pool === 'pool1' ? data.transactions.pool1 : pool === 'pool2' ? data.transactions.pool2 : pool === 'pool3' ? data.transactions.pool3 : pool === 'pool4' ? data.transactions.race : undefined;
   return (
     <TradesWrapper>
       <ul
