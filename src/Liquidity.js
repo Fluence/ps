@@ -2,7 +2,7 @@ import { useState, Fragment, useEffect, useReducer } from 'react';
 import styled from 'styled-components';
 
 import { BigNumber } from 'bignumber.js';
-import { apiEndpoint, smartContractAddress, farmTokenAddresses, farmTokenAddresses2, smartContractAddress2, farm2TokenAddresses, farm2TokenAddresses2, smartContractAddress3, farm3TokenAddresses, farm3TokenAddresses2, tokenDecimals, tokenDecimalsId } from './data/addresses.js';
+import { apiEndpoint, smartContractAddress, farmTokenAddresses, farmTokenAddresses2, smartContractAddress2, farm2TokenAddresses, farm2TokenAddresses2, smartContractAddress3, farm3TokenAddresses, farm3TokenAddresses2, smartContractAddress5, farm5TokenAddresses, farm5TokenAddresses2, tokenDecimals, tokenDecimalsId } from './data/addresses.js';
 
 const LiquidityWrapper = styled.main`
   grid-column: 2 / 6;
@@ -197,12 +197,19 @@ function reducer(state, action) {
         pool2ValueInUSDN: action.payload.pool2ValueInUSDN,
         pool2IndexValueInUSDN: action.payload.pool2IndexValueInUSDN,
 
-/*         pool3GlobalIndexAmount: action.payload.pool3GlobalIndexAmount,
+        pool3GlobalIndexAmount: action.payload.pool3GlobalIndexAmount,
         pool3StakedIndexAmount: action.payload.pool3StakedIndexBalance,
         pool3WalletStakedIndexAmounts: action.payload.pool3WalletIndexBalances,
         pool3WalletClaimedValues: action.payload.pool3WalletClaimedValues,
         pool3ValueInUSDN: action.payload.pool3ValueInUSDN,
-        pool3IndexValueInUSDN: action.payload.pool3IndexValueInUSDN */
+        pool3IndexValueInUSDN: action.payload.pool3IndexValueInUSDN,
+
+        pool5GlobalIndexAmount: action.payload.pool5GlobalIndexAmount,
+        pool5StakedIndexAmount: action.payload.pool5StakedIndexBalance,
+        pool5WalletStakedIndexAmounts: action.payload.pool5WalletIndexBalances,
+        pool5WalletClaimedValues: action.payload.pool5WalletClaimedValues,
+        pool5ValueInUSDN: action.payload.pool5ValueInUSDN,
+        pool5IndexValueInUSDN: action.payload.pool5IndexValueInUSDN
       }
     case 'FAIL': 
       return {
@@ -213,6 +220,12 @@ function reducer(state, action) {
       return state;
   }
 }
+
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 
 export function Liquidity({ liquidityAddings }) {
   const [lpIndexStats, dispatch] = useReducer(reducer, {loading: true, error: false});
@@ -225,6 +238,7 @@ export function Liquidity({ liquidityAddings }) {
     async function getData() {
       try {
         async function fetchIndexBalances() {
+          await delay(500);
           return Promise.all([
             fetch(`${apiEndpoint}/addresses/data/${smartContractAddress}?matches=.%2Aglobal_poolToken_amount`).then(r => r.json()),
             fetch(`${apiEndpoint}/addresses/data/${smartContractAddress}?matches=.%2A_indexStaked`).then(r => r.json()),
@@ -234,14 +248,18 @@ export function Liquidity({ liquidityAddings }) {
             fetch(`${apiEndpoint}/addresses/data/${smartContractAddress2}?matches=.%2A_indexStaked`).then(r => r.json()),
             fetch(`${apiEndpoint}/assets/balance/${smartContractAddress2}/DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p`).then(r => r.json()),
             fetch(`${apiEndpoint}/addresses/data/${smartContractAddress2}?matches=.%2A_claimedRewardValue`).then(r => r.json()),
-            // fetch(`${apiEndpoint}/addresses/data/${smartContractAddress3}?matches=.%2Aglobal_poolToken_amount`).then(r => r.json()),
-            // fetch(`${apiEndpoint}/addresses/data/${smartContractAddress3}?matches=.%2A_indexStaked`).then(r => r.json()),
-            // fetch(`${apiEndpoint}/assets/balance/${smartContractAddress3}/DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p`).then(r => r.json()),
-            // fetch(`${apiEndpoint}/addresses/data/${smartContractAddress3}?matches=.%2A_claimedRewardValue`).then(r => r.json()),
+            fetch(`${apiEndpoint}/addresses/data/${smartContractAddress3}?matches=.%2Aglobal_poolToken_amount`).then(r => r.json()),
+            fetch(`${apiEndpoint}/addresses/data/${smartContractAddress3}?matches=.%2A_indexStaked`).then(r => r.json()),
+            fetch(`${apiEndpoint}/assets/balance/${smartContractAddress3}/DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p`).then(r => r.json()),
+            fetch(`${apiEndpoint}/addresses/data/${smartContractAddress3}?matches=.%2A_claimedRewardValue`).then(r => r.json()),
+            fetch(`${apiEndpoint}/addresses/data/${smartContractAddress5}?matches=.%2Aglobal_poolToken_amount`).then(r => r.json()),
+            fetch(`${apiEndpoint}/addresses/data/${smartContractAddress5}?matches=.%2A_indexStaked`).then(r => r.json()),
+            fetch(`${apiEndpoint}/assets/balance/${smartContractAddress5}/DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p`).then(r => r.json()),
+            fetch(`${apiEndpoint}/addresses/data/${smartContractAddress5}?matches=.%2A_claimedRewardValue`).then(r => r.json()),
           ]);
         }
         /*create construct with all the variables*/
-        const [fetchedPool1GlobalIndexAmount, fetchedPool1IndexAmount, fetchedPool1USDNBalance, fetchedPool1ClaimedValues, fetchedPool2GlobalIndexAmount, fetchedPool2IndexAmount, fetchedPool2USDNBalance, fetchedPool2ClaimedValues, fetchedpool3GlobalIndexAmount, fetchedpool3IndexAmount, fetchedpool3USDNBalance, fetchedpool3ClaimedValues] = await fetchIndexBalances();
+        const [fetchedPool1GlobalIndexAmount, fetchedPool1IndexAmount, fetchedPool1USDNBalance, fetchedPool1ClaimedValues, fetchedPool2GlobalIndexAmount, fetchedPool2IndexAmount, fetchedPool2USDNBalance, fetchedPool2ClaimedValues, fetchedpool3GlobalIndexAmount, fetchedpool3IndexAmount, fetchedpool3USDNBalance, fetchedpool3ClaimedValues, fetchedpool5GlobalIndexAmount, fetchedpool5IndexAmount, fetchedpool5USDNBalance, fetchedpool5ClaimedValues] = await fetchIndexBalances();
         let pool1WalletIndexBalances = [];
         let pool1WalletClaimedValues = {};
         let pool1StakedIndexBalance;
@@ -292,7 +310,7 @@ export function Liquidity({ liquidityAddings }) {
           }
         });
         
-/*         let pool3WalletIndexBalances = [];
+        let pool3WalletIndexBalances = [];
         let pool3WalletClaimedValues = {};
         let pool3StakedIndexBalance;
         let pool3ValueInUSDN = BigNumber(helperForInAndOutAmount(fetchedpool3USDNBalance.balance, 'usdn')).multipliedBy(10).toString();
@@ -315,7 +333,32 @@ export function Liquidity({ liquidityAddings }) {
           if(wallet.key === 'global_indexStaked') {
             pool3StakedIndexBalance = wallet.value;
           }
-        }); */
+        });
+
+        let pool5WalletIndexBalances = [];
+        let pool5WalletClaimedValues = {};
+        let pool5StakedIndexBalance;
+        let pool5ValueInUSDN = BigNumber(helperForInAndOutAmount(fetchedpool5USDNBalance.balance, 'usdn')).multipliedBy(10).toString();
+        let pool5IndexValueInUSDN = (BigNumber(pool5ValueInUSDN).dividedBy(fetchedpool5GlobalIndexAmount[0].value)).toString();
+        fetchedpool5IndexAmount.forEach(walletIndex => {
+          if(walletIndex.key.length == 47) {
+            if(walletIndex.value === 0) return;
+            pool5WalletIndexBalances.push({[walletIndex.key.slice(0, 35)]: walletIndex.value});
+            return;
+          }
+          if(walletIndex.key === 'global_indexStaked') {
+            pool5StakedIndexBalance = walletIndex.value;
+          }
+        });
+        fetchedpool5ClaimedValues.forEach(wallet => {
+          if(wallet.key.length == 54) {
+            pool5WalletClaimedValues[wallet.key.slice(0, 35)] = helperForInAndOutAmount(wallet.value, 'usdn').toFixed(2);
+            return;
+          }
+          if(wallet.key === 'global_indexStaked') {
+            pool5StakedIndexBalance = wallet.value;
+          }
+        });
         
         if(!cancelled) {
           dispatch({
@@ -335,12 +378,19 @@ export function Liquidity({ liquidityAddings }) {
               pool2ValueInUSDN: pool2ValueInUSDN,
               pool2IndexValueInUSDN: pool2IndexValueInUSDN,
 
-/*               pool3GlobalIndexAmount: fetchedpool3GlobalIndexAmount[0].value,
+              pool3GlobalIndexAmount: fetchedpool3GlobalIndexAmount[0].value,
               pool3StakedIndexBalance: pool3StakedIndexBalance,
               pool3WalletIndexBalances: pool3WalletIndexBalances.sort((w1, w2) => w2[Object.keys(w2)] - w1[Object.keys(w1)]),
               pool3WalletClaimedValues: pool3WalletClaimedValues,
               pool3ValueInUSDN: pool3ValueInUSDN,
-              pool3IndexValueInUSDN: pool3IndexValueInUSDN */
+              pool3IndexValueInUSDN: pool3IndexValueInUSDN,
+
+              pool5GlobalIndexAmount: fetchedpool5GlobalIndexAmount[0].value,
+              pool5StakedIndexBalance: pool5StakedIndexBalance,
+              pool5WalletIndexBalances: pool5WalletIndexBalances.sort((w1, w2) => w2[Object.keys(w2)] - w1[Object.keys(w1)]),
+              pool5WalletClaimedValues: pool5WalletClaimedValues,
+              pool5ValueInUSDN: pool5ValueInUSDN,
+              pool5IndexValueInUSDN: pool5IndexValueInUSDN
             }
           })
         }
@@ -407,24 +457,40 @@ export function Liquidity({ liquidityAddings }) {
                     style={{
                       borderTop: '1px solid #7075e9',
                       borderBottom: 'none',
-                      width: 'auto'
+                      width: 'auto',
+                      marginRight: '2rem'
                     }}
                   >
                     farms 2
-                  </LPStyledList>
-{/*                   <LPStyledList
+                    </LPStyledList>
+                    <LPStyledList
                     onClick={() => {
-                      setLpProviderPool('defi');
+                      setLpProviderPool('pool3');
                       setLpProviderPoolPage(1);
                     }}
                     style={{
                       borderTop: '1px solid #7075e9',
                       borderBottom: 'none',
-                      width: 'auto'
+                      width: 'auto',
+                      marginRight: '2rem'
                     }}
                   >
                     DeFi
-                  </LPStyledList> */}
+                  </LPStyledList>
+                  <LPStyledList
+                    onClick={() => {
+                      setLpProviderPool('pool5');
+                      setLpProviderPoolPage(1);
+                    }}
+                    style={{
+                      borderTop: '1px solid #7075e9',
+                      borderBottom: 'none',
+                      width: 'auto',
+                      marginRight: '2rem'
+                    }}
+                  >
+                    Race
+                  </LPStyledList>
                 </LPPageList>
 
                 <div
@@ -450,7 +516,7 @@ export function Liquidity({ liquidityAddings }) {
 
                   <div>
                     {
-                      lpIndexStats[lpProviderPool == 'pool1' ? 'pool1WalletStakedIndexAmounts' : 'pool2WalletStakedIndexAmounts'].slice(0+(10*(lpProviderPoolPage-1)), 10+(10*(lpProviderPoolPage-1))).map((lp, idx) => {
+                      lpIndexStats[lpProviderPool == 'pool1' ? 'pool1WalletStakedIndexAmounts' : lpProviderPool == 'pool2' ? 'pool2WalletStakedIndexAmounts' : lpProviderPool == 'pool3' ? 'pool3WalletStakedIndexAmounts' : lpProviderPool == 'pool5' ? 'pool5WalletStakedIndexAmounts' : 'pool2WalletStakedIndexAmounts'].slice(0+(10*(lpProviderPoolPage-1)), 10+(10*(lpProviderPoolPage-1))).map((lp, idx) => {
                         const walletAddress = Object.keys(lp)[0];
                         return (
                           <TopWalletList
@@ -463,8 +529,8 @@ export function Liquidity({ liquidityAddings }) {
                               {walletAddress}
                             </div>
                             <span><span style={{textDecoration: 'underline #7075e9'}}>amount</span> : {helperForIndexTokens(lp[walletAddress]).toFixed(4)}</span>
-                            <span><span style={{textDecoration: 'underline #7075e9'}}>value</span> : {BigNumber(lp[walletAddress]).multipliedBy(lpIndexStats[lpProviderPool == 'pool1' ? 'pool1IndexValueInUSDN' : 'pool2IndexValueInUSDN']).toFixed(2).toString()}</span>
-                            <span><span style={{textDecoration: 'underline #7075e9'}}>claimed</span> : {lpIndexStats[lpProviderPool == 'pool1' ? 'pool1WalletClaimedValues' : 'pool2WalletClaimedValues'][walletAddress]}</span>
+                            <span><span style={{textDecoration: 'underline #7075e9'}}>value</span> : {BigNumber(lp[walletAddress]).multipliedBy(lpIndexStats[lpProviderPool == 'pool1' ? 'pool1IndexValueInUSDN' : lpProviderPool == 'pool2' ? 'pool2IndexValueInUSDN' : lpProviderPool == 'pool3' ? 'pool3IndexValueInUSDN' : lpProviderPool == 'pool5' ? 'pool5IndexValueInUSDN' : 'pool2IndexValueInUSDN' ]).toFixed(2).toString()}</span>
+                            <span><span style={{textDecoration: 'underline #7075e9'}}>claimed</span> : {lpIndexStats[lpProviderPool == 'pool1' ? 'pool1WalletClaimedValues' : lpProviderPool == 'pool2' ? 'pool2WalletClaimedValues' : lpProviderPool == 'pool3' ? 'pool3WalletClaimedValues' : lpProviderPool == 'pool5' ? 'pool5WalletClaimedValues' : 'pool2WalletClaimedValues' ][walletAddress]}</span>
                           </TopWalletList>
                         )
                       })
@@ -475,7 +541,7 @@ export function Liquidity({ liquidityAddings }) {
 
                 <LPPageList>
                 {
-                  new Array(lpIndexStats[lpProviderPool == 'pool1' ? 'pool1WalletStakedIndexAmounts' : 'pool2WalletStakedIndexAmounts'].length > 100 ? 10 : Math.ceil(lpIndexStats[lpProviderPool == 'pool1' ? 'pool1WalletStakedIndexAmounts' : 'pool2WalletStakedIndexAmounts'].length / 10)).fill(undefined).map((el, idx) => {
+                  new Array(lpIndexStats[lpProviderPool == 'pool1' ? 'pool1WalletStakedIndexAmounts' : lpProviderPool == 'pool2' ? 'pool2WalletStakedIndexAmounts' : lpProviderPool == 'pool3' ? 'pool3WalletStakedIndexAmounts': lpProviderPool == 'pool5' ? 'pool5WalletStakedIndexAmounts' : 'pool2WalletStakedIndexAmounts'].length > 100 ? 10 : Math.ceil(lpIndexStats[lpProviderPool == 'pool1' ? 'pool1WalletStakedIndexAmounts' : lpProviderPool == 'pool2' ? 'pool2WalletStakedIndexAmounts' : lpProviderPool == 'pool3' ? 'pool3WalletStakedIndexAmounts': lpProviderPool == 'pool5' ? 'pool5WalletStakedIndexAmounts' : 'pool2WalletStakedIndexAmounts'].length / 10)).fill(undefined).map((el, idx) => {
                     return (
                       <LPStyledList 
                         key={idx}
