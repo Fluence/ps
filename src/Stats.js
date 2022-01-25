@@ -117,8 +117,9 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
         const tradingNumbersPool1 = Object.values(tradingNumbers).map(tradeNumber => tradeNumber.pool1);
         const tradingNumbersPool2 = Object.values(tradingNumbers).map(tradeNumber => tradeNumber.pool2);
         const tradingNumbersPool3 = Object.values(tradingNumbers).map(tradeNumber => tradeNumber.pool3);
+        const tradingNumbersRace = Object.values(tradingNumbers).map(tradeNumber => tradeNumber.race);
 
-        setHistorical({ tradingDates, tradingNumbersAll, tradingNumbersPool1, tradingNumbersPool2, tradingNumbersPool3 });
+        setHistorical({ tradingDates, tradingNumbersAll, tradingNumbersPool1, tradingNumbersPool2, tradingNumbersPool3, tradingNumbersRace });
 
 
         const fetchedVolumeNumbers = await fetch('https://data.puzzlepedia.cc/puzzleswap-volumes');
@@ -153,8 +154,14 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
           volumeNumbersPool3.push(BigNumber(volumeNumber.pool3).minus(volumeNumbersValues[idx-1].pool3).toString());
         });
 
-        setHistorical({ tradingDates, tradingNumbersAll, tradingNumbersPool1, tradingNumbersPool2, tradingNumbersPool3 });
-        setHistoricalVolumes({ volumeDates, volumeNumbersAll, volumeNumbersPool1, volumeNumbersPool2, volumeNumbersPool3 });
+        const volumeNumbersRace = [];
+        volumeNumbersValues.forEach((volumeNumber, idx) => {
+          if(idx === 0) return;
+          volumeNumbersRace.push(BigNumber(volumeNumber.race).minus(volumeNumbersValues[idx-1].race).toString());
+        });
+
+        setHistorical({ tradingDates, tradingNumbersAll, tradingNumbersPool1, tradingNumbersPool2, tradingNumbersPool3, tradingNumbersRace });
+        setHistoricalVolumes({ volumeDates, volumeNumbersAll, volumeNumbersPool1, volumeNumbersPool2, volumeNumbersPool3, volumeNumbersRace });
         setLoading(false);
         setError(false);
       } catch {
@@ -178,7 +185,7 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
             <Fragment>
               <StatsTitle className="rotate-puzzle">
                 <img src={images.puzzleswap} alt="puzzle swap" width="16px" height="16px" />
-                <span style={{marginLeft: '4px'}}>daily stats</span>
+                <span style={{marginLeft: '4px'}}>Daily stats</span>
               </StatsTitle>
 
               <div>
@@ -191,7 +198,7 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
                     borderRadius: '8px 8px 8px 0'
                   }}
                 >
-                  *all = farms 1 + farms 2 + defi
+                  *All = (except Puzzle Parent Pool)
                 </span>
               </div>
 
@@ -216,7 +223,7 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
                     borderRadius: '7px'
                   }}
                 >
-                  daily trading numbers
+                  Daily Trading Numbers
                 </span>
                 <span 
                   onClick={() => {
@@ -232,7 +239,7 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
                     borderRadius: '7px'
                   }}
                 >
-                  daily trading volume
+                  Daily Trading Volume
                 </span>
               </div>
 
@@ -258,7 +265,7 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
                           borderRadius: '7px'
                         }}
                       >
-                        *all
+                        *All
                       </span>
                       <span 
                         onClick={() => setPoolStats('pool1')}
@@ -271,7 +278,7 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
                           borderRadius: '7px'
                         }}
                       >
-                        farms 1
+                        Farms 1
                       </span>
                       <span 
                         onClick={() => setPoolStats('pool2')}
@@ -284,7 +291,7 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
                           borderRadius: '7px'
                         }}
                       >
-                        farms 2
+                        Farms 2
                       </span>
                       <span 
                         onClick={() => setPoolStats('pool3')}
@@ -297,7 +304,20 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
                           borderRadius: '7px'
                         }}
                       >
-                        defi
+                        DeFi
+                      </span>
+                      <span 
+                        onClick={() => setPoolStats('race')}
+                        style={{
+                          background: '#7075e9',
+                          color: 'white',
+                          padding: '0.25rem 0.5rem',
+                          cursor: 'pointer',
+                          fontWeight: 'bold',
+                          borderRadius: '7px'
+                        }}
+                      >
+                        Race
                       </span>
                     </div>
                     <TradingChart historical={historical} pool={poolStats} /> 
@@ -322,7 +342,7 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
                           borderRadius: '7px'
                         }}
                       >
-                        *all
+                        *All
                       </span>
                       <span 
                         onClick={() => setPoolStats('pool1')}
@@ -335,7 +355,7 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
                           borderRadius: '7px'
                         }}
                       >
-                        farms 1
+                        Farms 1
                       </span>
                       <span 
                         onClick={() => setPoolStats('pool2')}
@@ -348,7 +368,7 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
                           borderRadius: '7px'
                         }}
                       >
-                        farms 2
+                        Farms 2
                       </span>
                       <span 
                         onClick={() => setPoolStats('pool3')}
@@ -361,7 +381,20 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
                           borderRadius: '7px'
                         }}
                       >
-                        defi
+                        Defi
+                      </span>
+                      <span 
+                        onClick={() => setPoolStats('race')}
+                        style={{
+                          background: '#7075e9',
+                          color: 'white',
+                          padding: '0.25rem 0.5rem',
+                          cursor: 'pointer',
+                          fontWeight: 'bold',
+                          borderRadius: '7px'
+                        }}
+                      >
+                        Race
                       </span>
                     </div>
                     <TradingChart historicalVolumes={historicalVolumes} pool={poolStats} /> 
@@ -386,8 +419,8 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
       <Test>
         <li>farms 1: {tradesInLastTwentyFourHours.numberPool1}</li>
         <li>farms 2: {tradesInLastTwentyFourHours.numberPool2}</li>
-        <li>defi: {tradesInLastTwentyFourHours.numberPool3}</li>
-        <li>puzzle: {tradesInLastTwentyFourHours.numberPool4}</li>
+        <li>Defi: {tradesInLastTwentyFourHours.numberPool3}</li>
+        <li>Puzzle: {tradesInLastTwentyFourHours.numberPool4}</li>
       </Test>
 
 

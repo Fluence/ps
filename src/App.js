@@ -69,7 +69,7 @@ function App() {
     const tradesPool3 =  data.transactions.pool3.filter(tx => {
       return 24*60*60*1000 >= (current - tx.timestamp);
     });
-    const tradesPool4 =  data.transactions.pool4.filter(tx => {
+    const tradesPool4 =  data.transactions.race.filter(tx => {
       return 24*60*60*1000 >= (current - tx.timestamp);
     });
 

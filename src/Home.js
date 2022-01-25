@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 
+
 const StatsTitle = styled.div`
   grid-column: 2 / 6;
   border: 1px solid #7075e9;
