@@ -1,6 +1,9 @@
 //export of variables for use in other scripts
 export const apiEndpoint = 'https://nodes.wavesnodes.com';
 
+//puzzle agg
+export const smartContractAddressAgg = "3PGFHzVGT4NTigwCKP1NcwoXkodVZwvBuuU";
+
 //puzzle farm 1
 export const smartContractAddress = "3PPRHHF9JKvDLkAc3aHD3Kd5tRZp1CoqAJa";
 
@@ -15,6 +18,12 @@ export const smartContractAddress4 = "3PFDgzu1UtswAkCMxqqQjbTeHaX4cMab8Kh";
 
 //race mega pool
 export const smartContractAddress5 = "3PNK5ypnPJioLmLUzfK6ezpaePHLxZd6QLj"
+
+//dapps list
+export const aggPools = {
+  swopusdn: "3PAtzncjJGWRpCtkR55wAzcfZ9fubMeA4JU",
+  swopusdn2: "3PBHyEwmERR1CEkrTNbPj2bgyisTfPRqfee"
+};
 
 //arrays with farm token addresses key/value
 export const farmTokenAddresses = {

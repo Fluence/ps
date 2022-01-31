@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { BigNumber } from 'bignumber.js';
 
-import { apiEndpoint, smartContractAddress, farmTokenAddresses, farmTokenAddresses2, smartContractAddress2, farm2TokenAddresses, farm2TokenAddresses2, smartContractAddress3, farm3TokenAddresses, farm3TokenAddresses2, smartContractAddress4, farm4TokenAddresses, farm4TokenAddresses2, smartContractAddress5, farm5TokenAddresses, farm5TokenAddresses2, tokenDecimals, tokenDecimalsId } from './data/addresses.js';
+import { apiEndpoint, smartContractAddressAgg, smartContractAddress, farmTokenAddresses, farmTokenAddresses2, smartContractAddress2, farm2TokenAddresses, farm2TokenAddresses2, smartContractAddress3, farm3TokenAddresses, farm3TokenAddresses2, smartContractAddress4, farm4TokenAddresses, farm4TokenAddresses2, smartContractAddress5, farm5TokenAddresses, farm5TokenAddresses2, tokenDecimals, tokenDecimalsId } from './data/addresses.js';
 
 const tokenNames = Object.keys(farmTokenAddresses);
 const tokenAddresses = Object.values(farmTokenAddresses);
@@ -124,6 +124,7 @@ export default function useData() {
 
         const transactions = await fetch('https://data.puzzlepedia.cc/puzzleswap-txs').then(r => r.json());
         const liquidityAddings = await fetch('https://data.puzzlepedia.cc/puzzleswap-lp').then(r => r.json());
+        //const aggregatorTx = await fetch('https://data.puzzlepedia.cc/agg-tx2.json').then(r => r.json())
 
         await new Promise(r => setTimeout(r, 1000));
         //

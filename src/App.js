@@ -18,6 +18,7 @@ import { Token } from './Token';
 import { Liquidity } from './Liquidity';
 import { Puzzle } from './Puzzle';
 import { Stats } from './Stats';
+import { Aggregator } from './Aggregator';
 
 const Wrapper = styled.div`
   display: grid;
@@ -133,6 +134,7 @@ function App() {
   }
 
   let tradesInLastTwentyFourHours;
+  let AggTradesInLastTwentyFourHours;
   if(data.transactions.length !== 0) {
     tradesInLastTwentyFourHours = trades24Hours();
   }
@@ -204,6 +206,10 @@ function App() {
                 <Route path="/stats" exact>
                 <Stats data={data} tradesInLastTwentyFourHours={tradesInLastTwentyFourHours} />
               </Route>
+                <Route path="/aggregator" exact>
+                  <Aggregator data = {data} AggTradesInLastTwentyFourHours = {AggTradesInLastTwentyFourHours} />
+                </Route>
+
 
               </Switch>
               

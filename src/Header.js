@@ -58,6 +58,11 @@ export function Header() {
         </Link>
       </li>
       <li style={{cursor: 'pointer', letterSpacing: '2px', fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: '0.9em'}}>
+        <Link to="/aggregator" className="header-menu">
+          AGGREGATOR
+        </Link>
+      </li>
+      <li style={{cursor: 'pointer', letterSpacing: '2px', fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: '0.9em'}}>
         <Link to="/puzzle" className="header-menu">
           PUZZLE
         </Link>
