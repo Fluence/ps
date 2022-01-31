@@ -114,12 +114,13 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
         });
         
         const tradingNumbersAll = Object.values(tradingNumbers).map(tradeNumber => tradeNumber.exchange);
+        const tradingNumbersAgg = Object.values(tradingNumbers).map(tradeNumber => tradeNumber.aggregator);
         const tradingNumbersPool1 = Object.values(tradingNumbers).map(tradeNumber => tradeNumber.pool1);
         const tradingNumbersPool2 = Object.values(tradingNumbers).map(tradeNumber => tradeNumber.pool2);
         const tradingNumbersPool3 = Object.values(tradingNumbers).map(tradeNumber => tradeNumber.pool3);
         const tradingNumbersRace = Object.values(tradingNumbers).map(tradeNumber => tradeNumber.race);
 
-        setHistorical({ tradingDates, tradingNumbersAll, tradingNumbersPool1, tradingNumbersPool2, tradingNumbersPool3, tradingNumbersRace });
+        setHistorical({ tradingDates, tradingNumbersAll, tradingNumbersAgg, tradingNumbersPool1, tradingNumbersPool2, tradingNumbersPool3, tradingNumbersRace });
 
 
         const fetchedVolumeNumbers = await fetch('https://data.puzzlepedia.cc/puzzleswap-volumes');
@@ -153,6 +154,11 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
           if(idx === 0) return;
           volumeNumbersPool3.push(BigNumber(volumeNumber.pool3).minus(volumeNumbersValues[idx-1].pool3).toString());
         });
+        const volumeNumbersPuzzle = [];
+        volumeNumbersValues.forEach((volumeNumber, idx) => {
+          if(idx === 0) return;
+          volumeNumbersPuzzle.push(BigNumber(volumeNumber.pool1).minus(volumeNumbersValues[idx-1].puzzle).toString());
+        });
 
         const volumeNumbersRace = [];
         volumeNumbersValues.forEach((volumeNumber, idx) => {
@@ -160,8 +166,8 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
           volumeNumbersRace.push(BigNumber(volumeNumber.race).minus(volumeNumbersValues[idx-1].race).toString());
         });
 
-        setHistorical({ tradingDates, tradingNumbersAll, tradingNumbersPool1, tradingNumbersPool2, tradingNumbersPool3, tradingNumbersRace });
-        setHistoricalVolumes({ volumeDates, volumeNumbersAll, volumeNumbersPool1, volumeNumbersPool2, volumeNumbersPool3, volumeNumbersRace });
+        setHistorical({ tradingDates, tradingNumbersAll, tradingNumbersAgg, tradingNumbersPool1, tradingNumbersPool2, tradingNumbersPool3, tradingNumbersRace });
+        setHistoricalVolumes({ volumeDates, volumeNumbersAll, volumeNumbersPool1, volumeNumbersPool2, volumeNumbersPool3, volumeNumbersPuzzle, volumeNumbersRace });
         setLoading(false);
         setError(false);
       } catch {
@@ -305,6 +311,19 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
                         }}
                       >
                         DeFi
+                        </span>
+                        <span 
+                        onClick={() => setPoolStats('aggregator')}
+                        style={{
+                          background: '#7075e9',
+                          color: 'white',
+                          padding: '0.25rem 0.5rem',
+                          cursor: 'pointer',
+                          fontWeight: 'bold',
+                          borderRadius: '7px'
+                        }}
+                      >
+                        🐊AGGREGATOR
                       </span>
                       <span 
                         onClick={() => setPoolStats('race')}
@@ -382,6 +401,19 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
                         }}
                       >
                         Defi
+                      </span>
+                      <span 
+                        onClick={() => setPoolStats('puzzle')}
+                        style={{
+                          background: '#7075e9',
+                          color: 'white',
+                          padding: '0.25rem 0.5rem',
+                          cursor: 'pointer',
+                          fontWeight: 'bold',
+                          borderRadius: '7px'
+                        }}
+                      >
+                        Puzzle
                       </span>
                       <span 
                         onClick={() => setPoolStats('race')}

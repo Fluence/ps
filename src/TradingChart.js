@@ -36,7 +36,7 @@ export function TradingChart({historical, historicalVolumes, pool}) {
       datasets: [
         {
           label: 'TRADES',
-          data: historical[pool == 'all' ? 'tradingNumbersAll' : pool == 'pool1' ? 'tradingNumbersPool1' : pool == 'pool2' ? 'tradingNumbersPool2' : pool == 'pool3' ? 'tradingNumbersPool3' : pool == 'race' ? 'tradingNumbersRace' : undefined ],
+          data: historical[pool == 'all' ? 'tradingNumbersAll' : pool == 'aggregator' ? 'tradingNumbersAgg' : pool == 'pool1' ? 'tradingNumbersPool1' : pool == 'pool3' ? 'tradingNumbersPool3' : pool == 'race' ? 'tradingNumbersRace' : undefined ],
           fill: true,
           backgroundColor: 'rgba(112, 117, 233, 0.5)',
           borderColor: 'rgba(112, 117, 233, 1)',
@@ -50,7 +50,7 @@ export function TradingChart({historical, historicalVolumes, pool}) {
       datasets: [
         {
           label: 'VOLUME',
-          data: historicalVolumes[pool == 'all' ? 'volumeNumbersAll' : pool == 'pool1' ? 'volumeNumbersPool1' : pool == 'pool2' ? 'volumeNumbersPool2' : pool == 'pool3' ? 'volumeNumbersPool3' : pool == 'race' ? 'volumeNumbersRace' : undefined ],
+          data: historicalVolumes[pool == 'all' ? 'volumeNumbersAll' : pool == 'pool1' ? 'volumeNumbersPool1' : pool == 'pool2' ? 'volumeNumbersPool2' : pool == 'pool3' ? 'volumeNumbersPool3' : pool == 'puzzle' ? 'volumeNumbersPuzzle' : pool == 'race' ? 'volumeNumbersRace' : undefined ],
           fill: true,
           backgroundColor: 'rgba(112, 117, 233, 0.5)',
           borderColor: 'rgba(112, 117, 233, 1)',
