@@ -315,7 +315,7 @@ export function Aggregator({ data }) {
               <TradeList key={transaction.id}>
 
                 <TradeListTitle>
-                  <a href={`https://wavesexplorer.com/tx/${transaction.transactionId}`} target="_blank" style={{flex: '0 0 20px', borderRight: '1px solid #7075e9', marginRight: '5px', color: 'blue'}}>tx</a>
+                  <a href={`https://wavesexplorer.com/tx/${transaction.id}`} target="_blank" style={{flex: '0 0 20px', borderRight: '1px solid #7075e9', marginRight: '5px', color: 'blue'}}>tx</a>
                   <span>{transaction.sender}</span>
                   <small>{date.toLocaleString('en-US', {timeZone: 'UTC'})}</small>
                   
