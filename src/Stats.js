@@ -457,13 +457,7 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
         <li>Race: {tradesInLastTwentyFourHours.numberPool4}</li>
       </Test>
 
-      <Test>
-        <li>🐊AGGREGATOR: {tradesInLastTwentyFourHours.amountPoolAggregator}</li>
-        <li>farms 1: {tradesInLastTwentyFourHours.numberPool1}</li>
-        <li>farms 2: {tradesInLastTwentyFourHours.numberPool2}</li>
-        <li>Defi: {tradesInLastTwentyFourHours.numberPool3}</li>
-        <li>Race: {tradesInLastTwentyFourHours.numberPool4}</li>
-      </Test>
+
 
 
       <StatsWrapper>
