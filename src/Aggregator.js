@@ -277,12 +277,12 @@ function helperForInAndOutAmount(amount, asset) {
   }
 }
 
-export function Aggregator({ data }) {
+export function Aggregator({ data, tradesInLastTwentyFourHours }) {
   const [showLeftMore, setShowLeftMore] = useState(false);
   const [showRightMore, setShowRightMore] = useState(false);
   const [page, setPage] = useState(0);
   const [pool, setPool] = useState('all');
-  let transactions = pool === 'all' ? data.transactions.aggregator : pool === 'pool1' ? data.transactions.pool1 : pool === 'pool2' ? data.transactions.pool2 : pool === 'pool3' ? data.transactions.pool3 : pool === 'pool4' ? data.transactions.race : undefined;
+  let transactions = pool === 'all' ? data.transactions.aggregator : pool === 'top' ? data.transactions.aggtop : pool === 'pool2' ? data.transactions.pool2 : pool === 'pool3' ? data.transactions.pool3 : pool === 'pool4' ? data.transactions.race : undefined;
   //let aggregatorTx = pool === 'all' ? data.aggregatorTx.exchange : undefined;
   return (
     <TradesWrapper>
@@ -303,7 +303,20 @@ export function Aggregator({ data }) {
           }}
         >
           All
+
+          
         </TradeFilterList>}
+        {<TradeFilterList
+        onClick={() => {
+          setPool("top");
+          setPage(0);
+        }}
+      >
+        Top
+
+        
+      </TradeFilterList>}
+        
       </ul>
 
       <div>
@@ -311,12 +324,13 @@ export function Aggregator({ data }) {
           /*slice the tx into 25 per page*/
           transactions.slice(0+page*25, 25+page*25).map(transaction => {
             const date = new Date(transaction.timestamp);
+            
             return (
-              <TradeList key={transaction.id}>
+              <TradeList key={transaction.transactionId}>
 
                 <TradeListTitle>
-                  <a href={`https://wavesexplorer.com/tx/${transaction.id}`} target="_blank" style={{flex: '0 0 20px', borderRight: '1px solid #7075e9', marginRight: '5px', color: 'blue'}}>tx</a>
-                  <span>{transaction.sender}</span>
+                  <a href={`https://wavesexplorer.com/tx/${transaction.transactionId}`} target="_blank" style={{flex: '0 0 20px', borderRight: '1px solid #7075e9', marginRight: '5px', color: 'blue'}}>tx</a>
+                  <span>{transaction.address}</span>
                   <small>{date.toLocaleString('en-US', {timeZone: 'UTC'})}</small>
                   
                 </TradeListTitle>
@@ -339,7 +353,7 @@ export function Aggregator({ data }) {
                 </InnerShowMoreButton> */}
 
                 <TopUp>
-                <span style={{justifySelf: 'right', textAlign: 'Left'}}>Staking reward<br />{helperForInAndOutAmount(transaction.topup, transaction.from)} <br /> </span>       
+                <span style={{justifySelf: 'right', textAlign: 'Left'}}>Staking reward<br />{transaction.topup} <br /> </span>       
                 <small><span style={{justifySelf: 'center', textAlign: 'center'}}>Route info <br /> under construction <br /> </span></small>                       
                 </TopUp>
 
@@ -378,6 +392,8 @@ export function Aggregator({ data }) {
           })
         }
       </div>
+
+
       <PageList>
         {
           new Array(transactions.length > 250 ? 10 : Math.ceil(transactions.length / 25)).fill(undefined).map((el, idx) => {

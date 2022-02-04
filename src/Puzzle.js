@@ -236,10 +236,21 @@ export function Puzzle() {
         let fetchedPuzzleDistribution = await fetch(`${apiEndpoint}/assets/${puzzleAddress}/distribution/${blockHeight-1}/limit/999`).then(r => r.json());
         let puzzleDistribution = fetchedPuzzleDistribution.items;
 
+        let fetchedPuzzleStakersDist = await fetch(`${apiEndpoint}/addresses/data/3PFTbywqxtFfukX3HyT881g4iW5K4QL3FAS?matches=.%2A_staked`).then(r => r.json());
+        let PuzzleStakers = fetchedPuzzleStakersDist.items;
+        console.log(fetchedPuzzleDistribution)
+
+
+
         async function fetchRecursively(nextItem) {
           const fetchedPuzzleDistributionNext = await fetch(`${apiEndpoint}/assets/${puzzleAddress}/distribution/${blockHeight-1}/limit/999?after=${nextItem}`).then(r => r.json());
           const puzzleDistributionNext = fetchedPuzzleDistributionNext.items;
           puzzleDistribution = { ...puzzleDistribution, ...puzzleDistributionNext };
+
+
+          
+          
+
           if(fetchedPuzzleDistributionNext.hasNext) {
             await fetchRecursively(fetchedPuzzleDistributionNext.lastItem);
           }
@@ -249,10 +260,19 @@ export function Puzzle() {
         if(fetchedPuzzleDistribution.hasNext) {
           await fetchRecursively(fetchedPuzzleDistribution.lastItem);
         }
+        
+        
+        const sortedPuzzleDist = Object.entries(puzzleDistribution);
+        sortedPuzzleDist.sort((w1, w2) => w2[1] - w1[1]);
 
-        const sorted = Object.entries(puzzleDistribution);
-        sorted.sort((w1, w2) => w2[1] - w1[1]);
-        setTokenData(sorted);
+        const sortedPuzzleStake = Object.entries(PuzzleStakers)
+        sortedPuzzleStake.sort((w1, w2) => w2[1] - w1[1]);
+        
+        console.log(sortedPuzzleDist)
+        console.log(sortedPuzzleStake)
+
+        setTokenData(sortedPuzzleDist);
+        setTokenData(sortedPuzzleStake);
         setLoading(false);
         setError(false);
       } catch {
@@ -263,7 +283,7 @@ export function Puzzle() {
     getTokenData();
   }, []);
 
-console.log(tokenData)
+
 
   return (
     <Fragment>
@@ -486,43 +506,7 @@ console.log(tokenData)
         }
 
 
-      <PuzzleInfoTitle className="rotate-puzzle" style={{marginBottom: '1rem', marginTop: '3rem'}}>
-        <img src={images.puzzleswap} alt="puzzle swap" width="16px" height="16px" />
-        <span style={{marginLeft: '4px'}}>$PUZZLE NEWS</span>
-      </PuzzleInfoTitle>
-
-      <InfoWrapper>
-        <Info>
-          <h1><a href="https://medium.com/@puzzleswap/puzzle-tokenomics-b08f3bbc42af" style={{textDecoration: 'none', color: 'black'}}>Puzzle Tokenomics</a></h1>
-          <a href="https://medium.com/@puzzleswap/puzzle-tokenomics-b08f3bbc42af">
-            go to read
-          </a>
-        </Info>
-        <Info>
-          <h1><a href="https://medium.com/@puzzleswap/explaining-the-power-of-mega-pools-6f9437b94d5e" style={{textDecoration: 'none', color: 'black'}}>Explaining the power of mega pools</a></h1>
-          <a href="https://medium.com/@puzzleswap/explaining-the-power-of-mega-pools-6f9437b94d5e">
-            go to read
-          </a>
-        </Info>
-        <Info>
-          <h1><a href="https://medium.com/@puzzleswap/liquidity-providing-is-live-at-puzzle-swap-5ffaed38e9f0" style={{textDecoration: 'none', color: 'black'}}>Liquidity providing is live at Puzzle Swap</a></h1>
-          <a href="https://medium.com/@puzzleswap/liquidity-providing-is-live-at-puzzle-swap-5ffaed38e9f0">
-            go to read
-          </a>
-        </Info>
-        <Info>
-          <h1><a href="https://medium.com/@puzzleswap/the-first-defi-mega-pool-on-waves-is-live-90fe120a8217" style={{textDecoration: 'none', color: 'black'}}>The first DeFi mega pool on Waves is live</a></h1>
-          <a href="https://medium.com/@puzzleswap/the-first-defi-mega-pool-on-waves-is-live-90fe120a8217">
-            go to read
-          </a>
-        </Info>
-        <Info>
-          <h1><a href="https://medium.com/@puzzleswap/puzzle-swap-%EF%B8%8F-roadmap-d8629c2dd166" style={{textDecoration: 'none', color: 'black'}}>Puzzle Swap 🗺️ Roadmap</a></h1>
-          <a href="https://medium.com/@puzzleswap/puzzle-swap-%EF%B8%8F-roadmap-d8629c2dd166">
-            go to read
-          </a>
-        </Info>
-      </InfoWrapper>
+      
 
 
       </MainWrapper>
