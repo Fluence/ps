@@ -448,11 +448,21 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
       <StatsInfo>
         <div>number of trades: {tradesInLastTwentyFourHours.number}</div>
       </StatsInfo>
+
       <Test>
+        <li>🐊AGGREGATOR: {tradesInLastTwentyFourHours.numberPoolAggregator}</li>
         <li>farms 1: {tradesInLastTwentyFourHours.numberPool1}</li>
         <li>farms 2: {tradesInLastTwentyFourHours.numberPool2}</li>
         <li>Defi: {tradesInLastTwentyFourHours.numberPool3}</li>
-        <li>Puzzle: {tradesInLastTwentyFourHours.numberPool4}</li>
+        <li>Race: {tradesInLastTwentyFourHours.numberPool4}</li>
+      </Test>
+
+      <Test>
+        <li>🐊AGGREGATOR: {tradesInLastTwentyFourHours.amountPoolAggregator}</li>
+        <li>farms 1: {tradesInLastTwentyFourHours.numberPool1}</li>
+        <li>farms 2: {tradesInLastTwentyFourHours.numberPool2}</li>
+        <li>Defi: {tradesInLastTwentyFourHours.numberPool3}</li>
+        <li>Race: {tradesInLastTwentyFourHours.numberPool4}</li>
       </Test>
 
 
