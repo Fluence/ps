@@ -335,11 +335,7 @@ export function Home({data, tradesInLastTwentyFourHours}) {
 
   });
   const slicedVolume = (simpleNumber(getBeforeDot(volumeNumbersAll[volumeNumbersAll.length -1])))
-  
-  console.log(volumeNumbers)
-  
-  console.log(volumeNumbersAll)
-  console.log(slicedVolume)
+
   
 
   return (
@@ -355,7 +351,7 @@ export function Home({data, tradesInLastTwentyFourHours}) {
           {/* <span>Total volume <tab> {tradesInLastTwentyFourHours.number}</tab> <br /></span> */}
         </StatsInfoMain>
         <StatsInfoMain>
-        <span>Volume:  {slicedVolume} <br /></span>
+        <span>Volume:  {slicedVolume} <br /></span>        
         </StatsInfoMain>
 
       
@@ -451,6 +447,14 @@ export function Home({data, tradesInLastTwentyFourHours}) {
           <span style={{marginLeft: '4px'}}>Learn about Puzzleswap!</span>
         </InfoTitle>
       <InfoWrapper>
+      <Info>
+          <h2><a href="https://anna-nikolaeva.gitbook.io/puzzle-swap-guide/" style={{textDecoration: 'none', color: 'black'}}>Puzzle Swap Guide</a></h2>
+          <a href="https://anna-nikolaeva.gitbook.io/puzzle-swap-guide/">
+            read more...
+          </a>
+        </Info>
+
+      
       <Info>
           <h2><a href="https://medium.com/@puzzleswap/supreme-puzzle-adjustment-spa-proposal-c515a5855cea" style={{textDecoration: 'none', color: 'black'}}>Supreme Puzzle Adjustment (SPA) proposal</a></h2>
           <a href="https://medium.com/@puzzleswap/supreme-puzzle-adjustment-spa-proposal-c515a5855cea">

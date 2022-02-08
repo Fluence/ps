@@ -17,6 +17,7 @@ import { Header } from './Header';
 import { Token } from './Token';
 import { Liquidity } from './Liquidity';
 import { Puzzle } from './Puzzle';
+import { Puzzle2 } from './Puzzle2';
 import { Stats } from './Stats';
 import { Aggregator } from './Aggregator';
 
@@ -222,6 +223,10 @@ function App() {
                 </Route>
 
                 <Route path="/puzzle" exact>
+                  <Puzzle />
+                </Route>
+                
+                <Route path="/puzzle2" exact>
                   <Puzzle />
                 </Route>
 

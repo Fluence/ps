@@ -67,6 +67,11 @@ export function Header() {
         🧩PUZZLE
         </Link>
       </li>
+      <li style={{cursor: 'pointer', letterSpacing: '2px', fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: '0.9em'}}>
+        <Link to="/puzzle2" className="header-menu">
+        🧩PUZZLE2
+        </Link>
+      </li>
     </HeaderWrapper>
   )
 }
