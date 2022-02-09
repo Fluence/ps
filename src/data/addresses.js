@@ -19,6 +19,9 @@ export const smartContractAddress4 = "3PFDgzu1UtswAkCMxqqQjbTeHaX4cMab8Kh";
 //race mega pool
 export const smartContractAddress5 = "3PNK5ypnPJioLmLUzfK6ezpaePHLxZd6QLj"
 
+//Egg Pool
+export const smartContractAddress6 = "3PMHkdVCzeLAYuCh92FPtusuxdLk5xMB51y"
+
 //dapps list
 export const aggPools = {
   swopusdn: "3PAtzncjJGWRpCtkR55wAzcfZ9fubMeA4JU",
@@ -126,6 +129,15 @@ export const farm5TokenAddresses2 = {
   'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'usdn',
   'C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS': 'egg',
   'D4TPjtzpsDEJFS1pUAkvh1tJJJMNWGcSrds9sveBoQka': 'race',
+};
+
+export const farm6TokenAddresses = {
+  usdn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
+  egg: 'C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS',
+};
+export const farm6TokenAddresses2 = {
+  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'usdn',
+  'C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS': 'egg',
 };
 
 //

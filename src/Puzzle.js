@@ -236,21 +236,10 @@ export function Puzzle() {
         let fetchedPuzzleDistribution = await fetch(`${apiEndpoint}/assets/${puzzleAddress}/distribution/${blockHeight-1}/limit/999`).then(r => r.json());
         let puzzleDistribution = fetchedPuzzleDistribution.items;
 
-        let fetchedPuzzleStakersDist = await fetch(`${apiEndpoint}/addresses/data/3PFTbywqxtFfukX3HyT881g4iW5K4QL3FAS?matches=.%2A_staked`).then(r => r.json());
-        let PuzzleStakers = fetchedPuzzleStakersDist.items;
-        console.log(fetchedPuzzleDistribution)
-
-
-
         async function fetchRecursively(nextItem) {
           const fetchedPuzzleDistributionNext = await fetch(`${apiEndpoint}/assets/${puzzleAddress}/distribution/${blockHeight-1}/limit/999?after=${nextItem}`).then(r => r.json());
           const puzzleDistributionNext = fetchedPuzzleDistributionNext.items;
           puzzleDistribution = { ...puzzleDistribution, ...puzzleDistributionNext };
-
-
-          
-          
-
           if(fetchedPuzzleDistributionNext.hasNext) {
             await fetchRecursively(fetchedPuzzleDistributionNext.lastItem);
           }
@@ -260,19 +249,10 @@ export function Puzzle() {
         if(fetchedPuzzleDistribution.hasNext) {
           await fetchRecursively(fetchedPuzzleDistribution.lastItem);
         }
-        
-        
-        const sortedPuzzleDist = Object.entries(puzzleDistribution);
-        sortedPuzzleDist.sort((w1, w2) => w2[1] - w1[1]);
 
-        const sortedPuzzleStake = Object.entries(PuzzleStakers)
-        sortedPuzzleStake.sort((w1, w2) => w2[1] - w1[1]);
-        
-        console.log(sortedPuzzleDist)
-        console.log(sortedPuzzleStake)
-
-        setTokenData(sortedPuzzleDist);
-        setTokenData(sortedPuzzleStake);
+        const sorted = Object.entries(puzzleDistribution);
+        sorted.sort((w1, w2) => w2[1] - w1[1]);
+        setTokenData(sorted);
         setLoading(false);
         setError(false);
       } catch {
@@ -283,7 +263,7 @@ export function Puzzle() {
     getTokenData();
   }, []);
 
-
+console.log(tokenData)
 
   return (
     <Fragment>
@@ -295,68 +275,7 @@ export function Puzzle() {
         </PuzzleInfoTitle>
         <div>
 
-        <div
-          style={{
-            fontFamily: 'sans-serif',
-            fontSize: '1rem',
-            borderRight: '1px solid #7075e9',
-            borderBottom: '1px solid #7075e9',
-            borderBottomRightRadius: '10px',
-            marginRight: '0.8rem',
-            marginLeft: '0.8rem',
-            letterSpacing: '2px'
-          }}
-        >
-          <div
-            style={{
-              width: '5rem',
-              backgroundColor: '#7075e9',
-              color: 'white',
-              fontSize: '0.9rem',
-              fontWeight: 'bold',
-              padding: '0.2rem',
-              borderBottomRightRadius: '5px'
-            }}
-          >
-            supply
-          </div>
-          <div 
-            style={{
-              padding: '0.70rem'
-            }}
-          >
-            479,147 (hard coded) <a href="https://wavesexplorer.com/assets/HEB8Qaw9xrWpWs8tHsiATYGBWDBtP2S7kcPALrMu43AS" style={{color: '#7075e9', fontWeight: 'bold'}}>explorer</a> 
-          </div>
-        </div>
 
-          <div
-            style={{
-              fontFamily: 'sans-serif',
-              fontSize: '1rem',
-              borderLeft: '1px solid #7075e9',
-              borderBottom: '1px solid #7075e9',
-              marginRight: '0.8rem',
-              marginLeft: '0.8rem',
-              letterSpacing: '2px'
-            }}
-          >
-            <div
-              style={{
-                width: '5rem',
-                backgroundColor: '#7075e9',
-                color: 'white',
-                fontSize: '0.9rem',
-                fontWeight: 'bold',
-                padding: '0.2rem',
-                borderBottomRightRadius: '5px'
-              }}
-            >
-              id
-            </div>
-            <TokenId>
-              HEB8Qaw9xrWpWs8tHsiATYGBWDBtP2S7kcPALrMu43AS
-            </TokenId>
-          </div>
 
           <div
             style={{
@@ -381,7 +300,7 @@ export function Puzzle() {
                 borderBottomRightRadius: '5px'
               }}
             >
-              pools
+              Links
             </div>
             <div 
               style={{
@@ -390,10 +309,10 @@ export function Puzzle() {
                 justifyContent: 'space-between'
               }}
             >
-              <a href="https://puzzleswap.org/farms1" style={{color: '#7075e9', fontWeight: 'bold'}}>farms1</a> 
-              <a href="https://puzzleswap.org/farms2" style={{color: '#7075e9', fontWeight: 'bold'}}>farms2</a> 
-              <a href="https://puzzleswap.org/defi" style={{color: '#7075e9', fontWeight: 'bold'}}>defi</a> 
-              <a href="https://puzzleswap.org/puzzle" style={{color: '#7075e9', fontWeight: 'bold'}}>puzzle</a> 
+              <a href="https://puzzleswap.org/trade" style={{color: '#7075e9', fontWeight: 'bold'}}>trade</a> 
+              <a href="https://puzzleswap.org/invest" style={{color: '#7075e9', fontWeight: 'bold'}}>invest</a> 
+              <a href="https://puzzleswap.org/stake" style={{color: '#7075e9', fontWeight: 'bold'}}>stake</a> 
+              
             </div>
           </div>
 
@@ -506,7 +425,11 @@ export function Puzzle() {
         }
 
 
-      
+
+
+      <InfoWrapper>
+ 
+      </InfoWrapper>
 
 
       </MainWrapper>
