@@ -453,8 +453,6 @@ export function Home({data, tradesInLastTwentyFourHours}) {
             read more...
           </a>
         </Info>
-
-      
       <Info>
           <h2><a href="https://medium.com/@puzzleswap/supreme-puzzle-adjustment-spa-proposal-c515a5855cea" style={{textDecoration: 'none', color: 'black'}}>Supreme Puzzle Adjustment (SPA) proposal</a></h2>
           <a href="https://medium.com/@puzzleswap/supreme-puzzle-adjustment-spa-proposal-c515a5855cea">
@@ -479,13 +477,6 @@ export function Home({data, tradesInLastTwentyFourHours}) {
             read more...
           </a>
         </Info>
-        <Info>
-          <h2><a href="https://medium.com/@puzzleswap/liquidity-providing-is-live-at-puzzle-swap-5ffaed38e9f0" style={{textDecoration: 'none', color: 'black'}}>Liquidity providing is live at Puzzle Swap</a></h2>
-          <a href="https://medium.com/@puzzleswap/liquidity-providing-is-live-at-puzzle-swap-5ffaed38e9f0">
-            read more...
-          </a>
-        </Info>
-
         <Info>
           <h2><a href="https://medium.com/@puzzleswap/puzzle-swap-%EF%B8%8F-roadmap-d8629c2dd166" style={{textDecoration: 'none', color: 'black'}}>Puzzle Swap 🗺️ Roadmap<br/></a></h2>
           <a href="https://medium.com/@puzzleswap/puzzle-swap-%EF%B8%8F-roadmap-d8629c2dd166">
