@@ -123,7 +123,7 @@ export default function useData() {
 
 
         const transactions = await fetch('https://data.puzzlepedia.cc/puzzleswap-txs').then(r => r.json());
-        const liquidityAddings = await fetch('https://data.puzzlepedia.cc/puzzleswap-lp').then(r => r.json());
+        //const liquidityAddings = await fetch('https://data.puzzlepedia.cc/puzzleswap-lp').then(r => r.json());
         const volumeNumbers = await fetch('https://data.puzzlepedia.cc/puzzleswap-volumes').then(r => r.json());
         
 
@@ -132,7 +132,7 @@ export default function useData() {
         await new Promise(r => setTimeout(r, 1000));
         //
         
-        setData({...data, contractBalance: contractBalance, transactions, liquidityAddings, volumeNumbers});
+        setData({...data, contractBalance: contractBalance, transactions, volumeNumbers});
         setLoading(false);
         setError(false);
 
