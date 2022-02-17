@@ -132,7 +132,7 @@ export default function useData() {
         await new Promise(r => setTimeout(r, 1000));
         //
         
-        setData({...data, contractBalance: contractBalance, transactions, volumeNumbers});
+        setData({...data, contractBalance: contractBalance, transactions, liquidityAddings, volumeNumbers});
         setLoading(false);
         setError(false);
 
