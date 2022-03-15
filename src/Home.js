@@ -369,7 +369,7 @@ export function Home({data, tradesInLastTwentyFourHours}) {
           }}
         >
           {
-            tradesInLastTwentyFourHours.pairs.slice(0, /* showLeftMore ? 10 : */ 3).map(([pair, time], idx) => {
+            tradesInLastTwentyFourHours.pairs.slice(0, /* showLeftMore ? 10 : */ 10).map(([pair, time], idx) => {
               return (
                 <li key={pair} className="home-stats" style={{margin: '4px', padding: '3px 0 1px 5px', letterSpacing: '0.5px'}}>
                   {idx+1}) {pair.toUpperCase()} - {time} times
@@ -400,7 +400,7 @@ export function Home({data, tradesInLastTwentyFourHours}) {
           }}
         >
           {
-            tradesInLastTwentyFourHours.tokens.slice(0, /* showRightMore ? 10 : */ 3).map(([token, time], idx) => {
+            tradesInLastTwentyFourHours.tokens.slice(0, /* showRightMore ? 10 : */ 10).map(([token, time], idx) => {
               return (
                 <li key={token} className="home-stats" style={{margin: '4px', padding: '3px 0 1px 5px', letterSpacing: '0.5px'}}>
                   {idx+1}) {token.toUpperCase()} - {time} times
