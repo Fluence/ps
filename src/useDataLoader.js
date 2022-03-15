@@ -2,7 +2,18 @@ import { useState, useEffect } from 'react';
 
 import { BigNumber } from 'bignumber.js';
 
-import { apiEndpoint, smartContractAddressAgg, smartContractAddress, farmTokenAddresses, farmTokenAddresses2, smartContractAddress2, farm2TokenAddresses, farm2TokenAddresses2, smartContractAddress3, farm3TokenAddresses, farm3TokenAddresses2, smartContractAddress4, farm4TokenAddresses, farm4TokenAddresses2, smartContractAddress5, farm5TokenAddresses, farm5TokenAddresses2, tokenDecimals, tokenDecimalsId } from './data/addresses.js';
+import { apiEndpoint, smartContractAddressAgg, 
+  smartContractAddress, farmTokenAddresses, farmTokenAddresses2, 
+  smartContractAddress2, farm2TokenAddresses, farm2TokenAddresses2, 
+  smartContractAddress3, farm3TokenAddresses, farm3TokenAddresses2, 
+  smartContractAddress4, farm4TokenAddresses, farm4TokenAddresses2, 
+  smartContractAddress5, farm5TokenAddresses, farm5TokenAddresses2, 
+  smartContractAddress6, farm6TokenAddresses, farm6TokenAddresses2,
+  smartContractAddress7, farm7TokenAddresses, farm7TokenAddresses2,
+  smartContractAddress8, farm8TokenAddresses, farm8TokenAddresses2,
+  smartContractAddress9, farm9TokenAddresses, farm9TokenAddresses2,
+  smartContractAddress10, farm10TokenAddresses, farm10TokenAddresses2,
+  tokenDecimals, tokenDecimalsId } from './data/addresses.js';
 
 const tokenNames = Object.keys(farmTokenAddresses);
 const tokenAddresses = Object.values(farmTokenAddresses);
@@ -10,6 +21,11 @@ const tokenAddresses2 = Object.values(farm2TokenAddresses);
 const tokenAddresses3 = Object.values(farm3TokenAddresses);
 const tokenAddresses4 = Object.values(farm4TokenAddresses);
 const tokenAddresses5 = Object.values(farm5TokenAddresses);
+const tokenAddresses6 = Object.values(farm6TokenAddresses);
+const tokenAddresses7 = Object.values(farm7TokenAddresses);
+const tokenAddresses8 = Object.values(farm8TokenAddresses);
+const tokenAddresses9 = Object.values(farm9TokenAddresses);
+const tokenAddresses10 = Object.values(farm10TokenAddresses);
 
 function helperForInAndOutAmount(amount, asset) {
   const digit = tokenDecimals[asset];
@@ -24,6 +40,10 @@ function helperForInAndOutAmount(amount, asset) {
   }
 }
 
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export default function useData() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -36,6 +56,7 @@ export default function useData() {
         // fetch farm balances
 
         async function fetchFarmBalances() {
+          await delay(500);
           return Promise.all([
             fetch(`${apiEndpoint}/assets/balance/${smartContractAddress}`).then(r => r.json()),
             fetch(`${apiEndpoint}/assets/balance/${smartContractAddress2}`).then(r => r.json()),
@@ -46,10 +67,22 @@ export default function useData() {
             fetch(`${apiEndpoint}/assets/balance/${smartContractAddress4}`).then(r => r.json()),
             //get balance of race pool
             fetch(`${apiEndpoint}/assets/balance/${smartContractAddress5}`).then(r => r.json()),
+            //get balance of Egg pool
+            fetch(`${apiEndpoint}/assets/balance/${smartContractAddress6}`).then(r => r.json()),
+            //get balance of Winter pool
+            fetch(`${apiEndpoint}/assets/balance/${smartContractAddress7}`).then(r => r.json()),
+            //get balance of WWW pool
+            fetch(`${apiEndpoint}/assets/balance/${smartContractAddress8}`).then(r => r.json()),
+            //get balance of MunaBNB pool
+            fetch(`${apiEndpoint}/assets/balance/${smartContractAddress9}`).then(r => r.json()),
+            //get balance of Ducklization pool
+            fetch(`${apiEndpoint}/assets/balance/${smartContractAddress10}`).then(r => r.json()),
           ]);
         }
 
-        const [allAssetsInContract, allAssetsInContract2, allAssetsInContract3, wavesInContract3, allAssetsInContract4, allAssetsInContract5] = await fetchFarmBalances();
+        const [allAssetsInContract, allAssetsInContract2, allAssetsInContract3, 
+          wavesInContract3, allAssetsInContract4, allAssetsInContract5,
+          allAssetsInContract6, allAssetsInContract7, allAssetsInContract8, allAssetsInContract9, allAssetsInContract10] = await fetchFarmBalances();
 
         const farmOneBalances = [];
 
@@ -98,10 +131,60 @@ export default function useData() {
           }
         });
 
+        const farmSixBalances = [];
+
+        allAssetsInContract6.balances.forEach(asset => {
+          if(tokenAddresses6.includes(asset.assetId)) {
+            return farmSixBalances.push({ name: farm6TokenAddresses2[asset.assetId], balance: asset.balance / 10**tokenDecimalsId[asset.assetId] });
+          }
+        });
+
+        const farmSevenBalances = [];
+
+        allAssetsInContract7.balances.forEach(asset => {
+          if(tokenAddresses7.includes(asset.assetId)) {
+            return farmSevenBalances.push({ name: farm7TokenAddresses2[asset.assetId], balance: asset.balance / 10**tokenDecimalsId[asset.assetId] });
+          }
+        });
+
+        const farmEightBalances = [];
+
+        allAssetsInContract8.balances.forEach(asset => {
+          if(tokenAddresses8.includes(asset.assetId)) {
+            return farmEightBalances.push({ name: farm8TokenAddresses2[asset.assetId], balance: asset.balance / 10**tokenDecimalsId[asset.assetId] });
+          }
+        });
+
+        const farmNineBalances = [];
+
+        allAssetsInContract9.balances.forEach(asset => {
+          if(tokenAddresses9.includes(asset.assetId)) {
+            return farmNineBalances.push({ name: farm9TokenAddresses2[asset.assetId], balance: asset.balance / 10**tokenDecimalsId[asset.assetId] });
+          }
+        });
+
+        const farmTenBalances = [];
+
+        allAssetsInContract10.balances.forEach(asset => {
+          if(tokenAddresses10.includes(asset.assetId)) {
+            return farmTenBalances.push({ name: farm10TokenAddresses2[asset.assetId], balance: asset.balance / 10**tokenDecimalsId[asset.assetId] });
+          }
+        });
+
+
         
 
         let contractBalance = {};
-        [...farmOneBalances, ...farmTwoBalances, ...farmThreeBalances, ...farmFourBalances, ...farmFiveBalances].forEach(asset => {
+        [...farmOneBalances, 
+          ...farmTwoBalances,
+           ...farmThreeBalances,
+            ...farmFourBalances,
+             ...farmFiveBalances,
+              ...farmSixBalances,
+               ...farmSevenBalances,
+                ...farmEightBalances,
+                  ...farmNineBalances,
+                    ...farmTenBalances].forEach(asset => {
           if(contractBalance[asset.name] == undefined) {
             contractBalance[asset.name] = asset.balance;
           } else {
