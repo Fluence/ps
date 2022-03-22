@@ -21,11 +21,9 @@ const HeaderWrapper = styled.ul`
 export function Footer() {
   return (
     <HeaderWrapper>
-      <li><a className="footer-link" href="https://puzzleswap.org/farms">Farms Pool 1</a></li>
-      <li><a className="footer-link" href="https://puzzleswap.org/farms2">Farms Pool 2</a></li>
-      <li><a className="footer-link" href="https://puzzleswap.org/defi">Defi</a></li>
-      <li><a className="footer-link" href="https://puzzleswap.org/Race">Race</a></li>
-      <li><a className="footer-link" href="https://puzzleswap.org/puzzle">Puzzle</a></li>
+      <li><a className="footer-link" href="https://puzzleswap.org/trade">Trade</a></li>
+      <li><a className="footer-link" href="https://puzzleswap.org/invest">Invest</a></li>
+      <li><a className="footer-link" href="https://puzzleswap.org/stake">Stake</a></li>
     </HeaderWrapper>
   )
 }
