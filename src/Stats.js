@@ -179,6 +179,7 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
   }, []);
   
   return (
+    
     <TradesWrapper>
 
 
@@ -191,9 +192,12 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
             <Fragment>
               <StatsTitle className="rotate-puzzle">
                 <img src={images.puzzleswap} alt="puzzle swap" width="16px" height="16px" />
-                <span style={{marginLeft: '4px'}}>Daily stats</span>
+                <span style={{marginLeft: '4px'}}>Daily Stats</span>
               </StatsTitle>
-
+{/*               <StatsTitle className="rotate-puzzle">
+        <img src={images.puzzleswap} alt="puzzle swap" width="16px" height="16px" />
+        <span style={{marginLeft: '4px'}}>last 24 hours</span>
+      </StatsTitle> */}
               <div>
                 <span
                   style={{
@@ -260,7 +264,7 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
                         justifyContent: 'space-between'
                       }}
                     >
-                      <span 
+{/*                       <span 
                         onClick={() => setPoolStats('all')}
                         style={{
                           background: '#7075e9',
@@ -271,73 +275,9 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
                           borderRadius: '7px'
                         }}
                       >
-                        *All
-                      </span>
-                      <span 
-                        onClick={() => setPoolStats('pool1')}
-                        style={{
-                          background: '#7075e9',
-                          color: 'white',
-                          padding: '0.25rem 0.5rem',
-                          cursor: 'pointer',
-                          fontWeight: 'bold',
-                          borderRadius: '7px'
-                        }}
-                      >
-                        Farms 1
-                      </span>
-                      <span 
-                        onClick={() => setPoolStats('pool2')}
-                        style={{
-                          background: '#7075e9',
-                          color: 'white',
-                          padding: '0.25rem 0.5rem',
-                          cursor: 'pointer',
-                          fontWeight: 'bold',
-                          borderRadius: '7px'
-                        }}
-                      >
-                        Farms 2
-                      </span>
-                      <span 
-                        onClick={() => setPoolStats('pool3')}
-                        style={{
-                          background: '#7075e9',
-                          color: 'white',
-                          padding: '0.25rem 0.5rem',
-                          cursor: 'pointer',
-                          fontWeight: 'bold',
-                          borderRadius: '7px'
-                        }}
-                      >
-                        DeFi
-                        </span>
-                        <span 
-                        onClick={() => setPoolStats('aggregator')}
-                        style={{
-                          background: '#7075e9',
-                          color: 'white',
-                          padding: '0.25rem 0.5rem',
-                          cursor: 'pointer',
-                          fontWeight: 'bold',
-                          borderRadius: '7px'
-                        }}
-                      >
-                        🐊AGGREGATOR
-                      </span>
-                      <span 
-                        onClick={() => setPoolStats('race')}
-                        style={{
-                          background: '#7075e9',
-                          color: 'white',
-                          padding: '0.25rem 0.5rem',
-                          cursor: 'pointer',
-                          fontWeight: 'bold',
-                          borderRadius: '7px'
-                        }}
-                      >
-                        Race
-                      </span>
+                      
+                      </span> */}
+                      
                     </div>
                     <TradingChart historical={historical} pool={poolStats} /> 
                   </Fragment>
@@ -350,7 +290,7 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
                         justifyContent: 'space-between'
                       }}
                     >
-                      <span 
+{/*                       <span 
                         onClick={() => setPoolStats('all')}
                         style={{
                           background: '#7075e9',
@@ -361,73 +301,7 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
                           borderRadius: '7px'
                         }}
                       >
-                        *All
-                      </span>
-                      <span 
-                        onClick={() => setPoolStats('pool1')}
-                        style={{
-                          background: '#7075e9',
-                          color: 'white',
-                          padding: '0.25rem 0.5rem',
-                          cursor: 'pointer',
-                          fontWeight: 'bold',
-                          borderRadius: '7px'
-                        }}
-                      >
-                        Farms 1
-                      </span>
-                      <span 
-                        onClick={() => setPoolStats('pool2')}
-                        style={{
-                          background: '#7075e9',
-                          color: 'white',
-                          padding: '0.25rem 0.5rem',
-                          cursor: 'pointer',
-                          fontWeight: 'bold',
-                          borderRadius: '7px'
-                        }}
-                      >
-                        Farms 2
-                      </span>
-                      <span 
-                        onClick={() => setPoolStats('pool3')}
-                        style={{
-                          background: '#7075e9',
-                          color: 'white',
-                          padding: '0.25rem 0.5rem',
-                          cursor: 'pointer',
-                          fontWeight: 'bold',
-                          borderRadius: '7px'
-                        }}
-                      >
-                        Defi
-                      </span>
-                      <span 
-                        onClick={() => setPoolStats('puzzle')}
-                        style={{
-                          background: '#7075e9',
-                          color: 'white',
-                          padding: '0.25rem 0.5rem',
-                          cursor: 'pointer',
-                          fontWeight: 'bold',
-                          borderRadius: '7px'
-                        }}
-                      >
-                        Puzzle
-                      </span>
-                      <span 
-                        onClick={() => setPoolStats('race')}
-                        style={{
-                          background: '#7075e9',
-                          color: 'white',
-                          padding: '0.25rem 0.5rem',
-                          cursor: 'pointer',
-                          fontWeight: 'bold',
-                          borderRadius: '7px'
-                        }}
-                      >
-                        Race
-                      </span>
+                      </span> */}
                     </div>
                     <TradingChart historicalVolumes={historicalVolumes} pool={poolStats} /> 
                   </Fragment>
@@ -440,22 +314,13 @@ export function Stats( {tradesInLastTwentyFourHours} ) {
 
 
 
-      <StatsTitle className="rotate-puzzle">
-        <img src={images.puzzleswap} alt="puzzle swap" width="16px" height="16px" />
-        <span style={{marginLeft: '4px'}}>last 24 hours</span>
-      </StatsTitle>
+
 
       <StatsInfo>
         <div>number of trades: {tradesInLastTwentyFourHours.number}</div>
+
       </StatsInfo>
 
-      <Test>
-        <li>🐊AGGREGATOR: {tradesInLastTwentyFourHours.numberPoolAggregator}</li>
-        <li>farms 1: {tradesInLastTwentyFourHours.numberPool1}</li>
-        <li>farms 2: {tradesInLastTwentyFourHours.numberPool2}</li>
-        <li>Defi: {tradesInLastTwentyFourHours.numberPool3}</li>
-        <li>Race: {tradesInLastTwentyFourHours.numberPool4}</li>
-      </Test>
 
 
 

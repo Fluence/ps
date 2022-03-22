@@ -288,7 +288,7 @@ console.log(tokenData)
               letterSpacing: '2px'
             }}
           >
-            <div
+{/*             <div
               style={{
                 width: '5rem',
                 backgroundColor: '#7075e9',
@@ -300,7 +300,7 @@ console.log(tokenData)
               }}
             >
               Links
-            </div>
+            </div> */}
             <div 
               style={{
                 padding: '0.70rem',
@@ -362,7 +362,7 @@ console.log(tokenData)
           loading ?
 
             (
-              <div style={{width: "100%", height: "130px", textAlign: 'center'}}>
+              <div style={{width: "100%", height: "100px", textAlign: 'center'}}>
                 <img src={images.puzzleswap} className="rotate-token-logo" alt="" style={{borderRadius: "50%"}} width="100px" height="100px" />
               </div>
             ) :
@@ -380,7 +380,7 @@ console.log(tokenData)
 
                 <PuzzleInfoTitle className="rotate-puzzle" style={{marginTop: '3rem'}}>
                   <img src={images.puzzleswap} alt="puzzle swap" width="16px" height="16px" />
-                  <span style={{marginLeft: '4px'}}>TOP $PUZZLE HODLERS</span>
+                  <span style={{marginLeft: '4px'}}>Richlist</span>
                 </PuzzleInfoTitle>
 
 
