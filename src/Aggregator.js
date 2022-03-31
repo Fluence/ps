@@ -306,6 +306,7 @@ export function Aggregator({ data, tradesInLastTwentyFourHours }) {
 
           
         </TradeFilterList>}
+        
         {<TradeFilterList
         onClick={() => {
           setPool("top");
@@ -353,6 +354,7 @@ export function Aggregator({ data, tradesInLastTwentyFourHours }) {
                 </InnerShowMoreButton> */}
 
                 <TopUp>
+                <img src={images.usdn} style={{width: 25, height: 25, borderRadius: '50%'}} alt="USDN" />
                 <span style={{justifySelf: 'right', textAlign: 'Left'}}>Staking reward<br />{transaction.topup} <br /> </span>       
                 <small><span style={{justifySelf: 'center', textAlign: 'center'}}>Route info <br /> under construction <br /> </span></small>                       
                 </TopUp>

@@ -13,6 +13,8 @@ import { apiEndpoint, smartContractAddressAgg,
   smartContractAddress8, farm8TokenAddresses, farm8TokenAddresses2,
   smartContractAddress9, farm9TokenAddresses, farm9TokenAddresses2,
   smartContractAddress10, farm10TokenAddresses, farm10TokenAddresses2,
+  smartContractAddress11, farm11TokenAddresses, farm11TokenAddresses2,
+  smartContractAddress12, farm12TokenAddresses, farm12TokenAddresses2,
   tokenDecimals, tokenDecimalsId } from './data/addresses.js';
 
 const tokenNames = Object.keys(farmTokenAddresses);
@@ -26,6 +28,8 @@ const tokenAddresses7 = Object.values(farm7TokenAddresses);
 const tokenAddresses8 = Object.values(farm8TokenAddresses);
 const tokenAddresses9 = Object.values(farm9TokenAddresses);
 const tokenAddresses10 = Object.values(farm10TokenAddresses);
+const tokenAddresses11 = Object.values(farm11TokenAddresses);
+const tokenAddresses12 = Object.values(farm12TokenAddresses);
 
 function helperForInAndOutAmount(amount, asset) {
   const digit = tokenDecimals[asset];
@@ -77,12 +81,17 @@ export default function useData() {
             fetch(`${apiEndpoint}/assets/balance/${smartContractAddress9}`).then(r => r.json()),
             //get balance of Ducklization pool
             fetch(`${apiEndpoint}/assets/balance/${smartContractAddress10}`).then(r => r.json()),
+            //get balance of Ten pool
+            fetch(`${apiEndpoint}/assets/balance/${smartContractAddress11}`).then(r => r.json()),
+            //get balance of Ten pool
+            fetch(`${apiEndpoint}/assets/balance/${smartContractAddress12}`).then(r => r.json()),
           ]);
         }
 
         const [allAssetsInContract, allAssetsInContract2, allAssetsInContract3, 
           wavesInContract3, allAssetsInContract4, allAssetsInContract5,
-          allAssetsInContract6, allAssetsInContract7, allAssetsInContract8, allAssetsInContract9, allAssetsInContract10] = await fetchFarmBalances();
+          allAssetsInContract6, allAssetsInContract7, allAssetsInContract8, 
+          allAssetsInContract9, allAssetsInContract10, allAssetsInContract11, allAssetsInContract12] = await fetchFarmBalances();
 
         const farmOneBalances = [];
 
@@ -171,6 +180,22 @@ export default function useData() {
           }
         });
 
+        const farmElevenBalances = [];
+
+        allAssetsInContract11.balances.forEach(asset => {
+          if(tokenAddresses11.includes(asset.assetId)) {
+            return farmTenBalances.push({ name: farm11TokenAddresses2[asset.assetId], balance: asset.balance / 10**tokenDecimalsId[asset.assetId] });
+          }
+        });
+
+        const farmTwelveBalances = [];
+
+        allAssetsInContract12.balances.forEach(asset => {
+          if(tokenAddresses12.includes(asset.assetId)) {
+            return farmTenBalances.push({ name: farm12TokenAddresses2[asset.assetId], balance: asset.balance / 10**tokenDecimalsId[asset.assetId] });
+          }
+        });
+
 
         
 
@@ -184,7 +209,9 @@ export default function useData() {
                ...farmSevenBalances,
                 ...farmEightBalances,
                   ...farmNineBalances,
-                    ...farmTenBalances].forEach(asset => {
+                    ...farmTenBalances,
+                     ...farmElevenBalances,
+                      ...farmTwelveBalances].forEach(asset => {
           if(contractBalance[asset.name] == undefined) {
             contractBalance[asset.name] = asset.balance;
           } else {

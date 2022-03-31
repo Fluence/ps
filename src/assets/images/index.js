@@ -38,6 +38,7 @@ import btc from './btc.svg';
 import eth from './eth.svg';
 import bnb from './bnb.svg';
 import muna from './muna.svg';
+import snsbt from './snsbt.png';
 import puzzle from './puzzle.png';
 
 
@@ -82,5 +83,6 @@ export {
   eth,
   usdc,
   ltc,
+  snsbt,
   puzzle
 };

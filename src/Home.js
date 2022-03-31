@@ -203,7 +203,7 @@ const TokenBalance = styled.article`
   margin-top: 1rem;
 
   @media(max-width: 43.25rem) {
-    grid-column: 2 / 3;
+    grid-column: 4 / 6;
   }
   @media(max-width: 35.6rem) {
     grid-template-columns: 1fr;

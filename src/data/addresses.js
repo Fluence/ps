@@ -34,6 +34,12 @@ export const smartContractAddress9 = "3P9EydokbUM5XFrHgEUT9bNVgfF7fGmtxLk"
 //Ducklization IDO Pool
 export const smartContractAddress10 = "3PC87Z4vUzet6tTrTQmzJmW1UtouKjLhBJi"
 
+//BTC "Ten" pool
+export const smartContractAddress11 = "3PLiXyywNThdvf3vVEUxwc7TJTucjZvuegh"
+
+//SNSBT pool
+export const smartContractAddress12 = "3PEStCRPQuW3phthTtQ5upGeb4WZ47kssyM"
+
 //dapps list
 export const aggPools = {
   swopusdn: "3PAtzncjJGWRpCtkR55wAzcfZ9fubMeA4JU",
@@ -211,6 +217,32 @@ export const farm10TokenAddresses2 = {
   'C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS': 'egg',
 };
 
+//Ten Pool
+export const farm11TokenAddresses = {
+  usdn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
+  btc: '8LQW8f7P5d5PZM7GtZEBgaqRPGSzS3DfPuiXrURJ4AJS',
+  waves: 'waves',
+  eth: '474jTeYx2r2Va35794tCScAXWJG9hU2HcgxzMowaZUnu',
+};
+export const farm11TokenAddresses2 = {
+  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'usdn',
+  '8LQW8f7P5d5PZM7GtZEBgaqRPGSzS3DfPuiXrURJ4AJS': 'btc',
+  'WAVES': 'waves',
+  '474jTeYx2r2Va35794tCScAXWJG9hU2HcgxzMowaZUnu': 'eth',
+};
+
+//SNSBT Pool
+export const farm12TokenAddresses = {
+  snsbt: '8wUmN9Y15f3JR4KZfE81XLXpkdgwnqoBNG6NmocZpKQx',
+  nsbt: '6nSpVyNH7yM69eg446wrQR94ipbbcmZMU1ENPwanC97g',
+  usdn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
+};
+export const farm12TokenAddresses2 = {
+  '8wUmN9Y15f3JR4KZfE81XLXpkdgwnqoBNG6NmocZpKQx': 'snsbt',
+  '6nSpVyNH7yM69eg446wrQR94ipbbcmZMU1ENPwanC97g': 'nsbt',
+  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'usdn',
+};
+
 
 export const allFarmTokenAddresses = {
   'WAVES': 'waves',
@@ -250,6 +282,7 @@ export const allFarmTokenAddresses = {
   muna:'eCNH1aqUnocub8PbNsxLNvZWGeVE98L2Crw3cGY6Gq2',
   btc:'8LQW8f7P5d5PZM7GtZEBgaqRPGSzS3DfPuiXrURJ4AJS',
   eth:'474jTeYx2r2Va35794tCScAXWJG9hU2HcgxzMowaZUnu',
+  snsbt:'8wUmN9Y15f3JR4KZfE81XLXpkdgwnqoBNG6NmocZpKQx',
   puzzle: 'HEB8Qaw9xrWpWs8tHsiATYGBWDBtP2S7kcPALrMu43AS'
 };
 
@@ -291,6 +324,7 @@ export const tokenDecimals = {
   muna: 8,
   btc: 8,
   eth: 8,
+  snsbt: 6,
   puzzle: 8
 
 }
@@ -369,6 +403,8 @@ export const tokenDecimalsId = {
   '8LQW8f7P5d5PZM7GtZEBgaqRPGSzS3DfPuiXrURJ4AJS': 8,
   //eth: 8,
   '474jTeYx2r2Va35794tCScAXWJG9hU2HcgxzMowaZUnu': 8,
+  //snsbt: 6,
+  '8wUmN9Y15f3JR4KZfE81XLXpkdgwnqoBNG6NmocZpKQx': 6,
   //puzzle
   'HEB8Qaw9xrWpWs8tHsiATYGBWDBtP2S7kcPALrMu43AS': 8
 }
