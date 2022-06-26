@@ -18,6 +18,8 @@ import { Token } from './Token';
 import { Liquidity } from './Liquidity';
 import { Puzzle } from './Puzzle';
 import { Stats } from './Stats';
+import { Aggregator } from './Aggregator';
+
 
 const Wrapper = styled.div`
   display: grid;
@@ -69,13 +71,18 @@ function App() {
     const tradesPool3 =  data.transactions.pool3.filter(tx => {
       return 24*60*60*1000 >= (current - tx.timestamp);
     });
-    const tradesPool4 =  data.transactions.pool4.filter(tx => {
+    const tradesPool4 =  data.transactions.race.filter(tx => {
       return 24*60*60*1000 >= (current - tx.timestamp);
     });
+    const tradesAggregator =  data.transactions.aggregator.filter(tx => {
+      return 24*60*60*1000 >= (current - tx.timestamp);
+    });
+
 
     let tradedTokens = {};
     let tradedPairs = {};
     let tradedAmounts = {};
+    let tradedAggTop = {};
     
     trades.forEach(trade => {
       if(!(trade.from in tradedAmounts)) {
@@ -91,6 +98,19 @@ function App() {
         tradedAmounts[trade.to] = BigNumber(trade.out).plus(tradedAmounts[trade.to]).toString();
       }
     });
+
+    trades.forEach(trade => {
+      if(!(trade.topup in tradedAggTop)) {
+        tradedAggTop[trade.topup] = trade.topup;
+      }
+      if(trade.topup in tradedAggTop) {
+        tradedAggTop[trade.topup] = BigNumber(trade.topup).plus(tradedAggTop[trade.topup]).toString();
+      }
+    })
+
+
+
+// console.log(tradedAmounts)
 
     trades.forEach(trade => {
       if(trade.from in tradedTokens) {
@@ -125,14 +145,18 @@ function App() {
       tokens: tradedTokens, 
       pairs: tradedPairs, 
       amounts: tradedAmounts, 
+      topup: tradedAggTop,
+      amountPoolAggregator: tradesAggregator.tradedAmounts,
       numberPool1: tradesPool1.length, 
       numberPool2: tradesPool2.length, 
       numberPool3: tradesPool3.length, 
-      numberPool4: tradesPool4.length 
+      numberPool4: tradesPool4.length,
+      numberPoolAggregator: tradesAggregator.length
     };
   }
 
   let tradesInLastTwentyFourHours;
+  let AggTradesInLastTwentyFourHours;
   if(data.transactions.length !== 0) {
     tradesInLastTwentyFourHours = trades24Hours();
   }
@@ -200,10 +224,18 @@ function App() {
                 <Route path="/puzzle" exact>
                   <Puzzle />
                 </Route>
+                
+                <Route path="/puzzle2" exact>
+                  <Puzzle />
+                </Route>
 
                 <Route path="/stats" exact>
                 <Stats data={data} tradesInLastTwentyFourHours={tradesInLastTwentyFourHours} />
               </Route>
+                <Route path="/aggregator" exact>
+                  <Aggregator data = {data} AggTradesInLastTwentyFourHours = {AggTradesInLastTwentyFourHours} />
+                </Route>
+
 
               </Switch>
               

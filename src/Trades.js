@@ -93,7 +93,7 @@ const StyledList = styled.li`
 export function Trades({ data }) {
   const [page, setPage] = useState(0);
   const [pool, setPool] = useState('all');
-  let transactions = pool === 'all' ? data.transactions.exchange : pool === 'pool1' ? data.transactions.pool1 : pool === 'pool2' ? data.transactions.pool2 : pool === 'pool3' ? data.transactions.pool3 : pool === 'pool4' ? data.transactions.pool4 : undefined;
+  let transactions = pool === 'all' ? data.transactions.exchange : pool === 'pool1' ? data.transactions.pool1 : pool === 'pool2' ? data.transactions.pool2 : pool === 'pool3' ? data.transactions.pool3 : pool === 'pool4' ? data.transactions.race : undefined;
   return (
     <TradesWrapper>
       <ul
@@ -112,7 +112,7 @@ export function Trades({ data }) {
             setPage(0);
           }}
         >
-          all
+          All
         </TradeFilterList>
         <TradeFilterList
           onClick={() => {
@@ -120,7 +120,7 @@ export function Trades({ data }) {
             setPage(0);
           }}
         >
-          farms 1
+          Farms 1
         </TradeFilterList>
         <TradeFilterList
           onClick={() => {
@@ -128,7 +128,7 @@ export function Trades({ data }) {
             setPage(0);
           }}
         >
-          farms 2
+          Farms 2
         </TradeFilterList>
         <TradeFilterList
           onClick={() => {
@@ -136,7 +136,7 @@ export function Trades({ data }) {
             setPage(0);
           }}
         >
-          defi
+          DeFi
         </TradeFilterList>
         <TradeFilterList
           onClick={() => {
@@ -144,19 +144,20 @@ export function Trades({ data }) {
             setPage(0);
           }}
         >
-          puzzle
+          Race
         </TradeFilterList>
       </ul>
 
       <div>
         {
+          /*slice the tx into 25 per page*/
           transactions.slice(0+page*25, 25+page*25).map(transaction => {
             const date = new Date(transaction.timestamp);
             return (
               <TradeList key={transaction.transactionId}>
 
                 <TradeListTitle>
-                  <a href={`https://wavesexplorer.com/tx/${transaction.transactionId}`} style={{flex: '0 0 20px', borderRight: '1px solid #7075e9', marginRight: '5px', color: 'blue'}}>tx</a>
+                  <a href={`https://wavesexplorer.com/tx/${transaction.transactionId}`} target="_blank" style={{flex: '0 0 20px', borderRight: '1px solid #7075e9', marginRight: '5px', color: 'blue'}}>tx</a>
                   <span>{transaction.address}</span>
                   <small>{date.toLocaleString('en-US', {timeZone: 'UTC'})}</small>
                 </TradeListTitle>

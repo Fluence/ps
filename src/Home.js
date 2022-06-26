@@ -1,9 +1,11 @@
 import { useState, Fragment } from 'react';
 import * as images from './assets/images';
+import { BigNumber } from 'bignumber.js';
 
 import styled from 'styled-components';
 
 import { Link } from 'react-router-dom';
+
 
 
 const StatsTitle = styled.div`
@@ -11,6 +13,7 @@ const StatsTitle = styled.div`
   border: 1px solid #7075e9;
   border-radius: 0 14px 0 14px;
   padding: 0.7rem;
+  text-align: center;
   font-family: sans-serif;
   letter-spacing: 1px;
   font-weight: bold;
@@ -94,7 +97,7 @@ const ShowMoreButton = styled.div`
     font-size: 0.85rem;
     cursor: pointer;
     font-family: sans-serif;
-    z-index: 1;
+    z-index: 2;
     background-color: white;
     :hover {
       box-shadow: 0 0 5px #7075e9;
@@ -126,7 +129,71 @@ const InnerShowMoreButton = styled.div`
   }
 `;
 
+const MainWrapper = styled.div`
+  grid-column: 2 / 6;
 
+  @media(max-width: 43.25rem) {
+    grid-column: 2 / 3;
+  }
+`;
+
+/* const Info = styled.div`
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #7075e9; 
+  border-radius: 0 10px 0 10px; 
+  padding: 8px;
+
+  span {
+    flex: 1 0 300px;
+  }
+
+  @media(max-width: 35.6rem) {
+    flex-wrap: wrap;
+    span {
+      flex: 1 0 100%;
+      order: 1;
+      font-size: 0.8rem;
+    }
+    small {
+      flex-grow: 1;
+    }
+  }
+`; */
+
+const Info = styled.div`
+  border: 1px solid #7075e9;
+  border-radius: 10px 0 0 10px;
+  cursor: pointer;
+  
+  :hover {
+    box-shadow: 0 0 5px #7075e9;
+  }
+
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    padding: 10px;
+    margin: 0;
+  }
+
+  >a {
+    margin-top: auto;
+    text-align: right;
+    background-color: #7075e9;
+    color: white;
+    border-bottom-left-radius: 8px;
+    padding: 10px;
+  }
+`; 
+
+const InfoWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+`;
 
 const TokenBalance = styled.article`
   grid-column: 2 / 6;
@@ -136,7 +203,7 @@ const TokenBalance = styled.article`
   margin-top: 1rem;
 
   @media(max-width: 43.25rem) {
-    grid-column: 2 / 3;
+    grid-column: 4 / 6;
   }
   @media(max-width: 35.6rem) {
     grid-template-columns: 1fr;
@@ -146,12 +213,38 @@ const TokenBalance = styled.article`
 const TokenBalanceTitle = styled.div`
   grid-column: 1 / -1;
   border: 1px solid #7075e9;
-  border-radius: 0 14px 0 14px;
+  border-radius: 0 10px 0 10px;
+  
   padding: 0.7rem;
   font-family: sans-serif;
   letter-spacing: 1px;
   font-weight: bold;
 `;
+
+const StatsInfoMain = styled.div`
+  grid-column: 2 / -2;
+  border: 1px solid #7075e9;
+  border-radius: 0 10px 0 10px;
+  margin-bottom: 0.5em;
+  padding: 1rem;
+  text-align: center;
+  font-family: sans-serif;
+  letter-spacing: 5px;
+  font-weight: bold;
+`;
+
+const InfoTitle = styled.div`
+  grid-column: 1 / -1;
+  border: 1px solid #7075e9;
+  border-radius: 0 10px 0 10px;
+  text-align: center;
+  margin-bottom: 0.5em;
+  padding: 0.7rem;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+  font-weight: bold;
+`;
+
 
 const TokenList = styled.div`
 
@@ -169,25 +262,100 @@ const TokenList = styled.div`
 	color: white;
   }
 `;
+function getBeforeDot(str){
 
+  return str.split(".")[0]; 
+  /* This splits the string into an array using the "+" 
+     character as a delimiter.
+     Then it gets the first element of the split string.
+  */
+
+}
 
 export function Home({data, tradesInLastTwentyFourHours}) {
   const [showLeftMore, setShowLeftMore] = useState(false);
   const [showRightMore, setShowRightMore] = useState(false);
+  let volumeNumbers = data.volumeNumbers;
+
+  function simpleNumber(costOfIt, visualOfIt) {
+    var visualOfIt = costOfIt.toString();
+
+    var visualLeng = 6;
+    var maxLeng = 4;
+    var letterArrayIndex = 0;
+
+    var letterArray = ["K", " M", " B", " T", "Quad", " Quint", " Sext", " Sept", " Oct", " Non", " Dec", " Undec", " Duodec", " Tredec", " Quatuordecillion", " Quindecillion", " Sexdecillion", " Septendecillion", " Octodecillion", " Novemdecillion", " Vigintillion", " Unvigintillion", " Duovigintillion", " Tresvigintillion", " Quatuorvigintillion", " Quinquavigintillion", " Sesvigintillion", " Septemvigintillion", " Octovigintillion", " Novemvigintillion", " Trigintillion", " Untrigintillion", " Duotrigintillion", " Trestrigintillion", " Quatuortrigintillion", " Quinquatrigintillion", " Sestrigintillion", " Septentrigintillion", " Octotrigintillion", " Novemtrigintillion", " Quadragintillion", " Unquadragintillion", " Duoquadragintillion", " Tresquadragintillion", " Quatuorquadragintillion", " Quinquaquadragintillion", " Sesquadragintillion", " Septemquadragintillion", " Octoquadragintillion", " Novemquadragintillion", " Quinquagintillion", " Unquinquagintillion", " Duoquinquagintillion", " Tresquinquagintillion", " Quatuorquinquagintillion", " Quinquaquinquagintillion", " Sesquinquagintillion", " Septenquinquagintillion", " Octoquinquagintillion", " Novemquinquagintillion", " Sexagintillion", " Unsexagintillion", " Duosexagintillion", " Tressexagintillion", " Quatuorsexagintillion", " Quinquasexagintillion", " Sexasexagintillion", " Septemsexagintillion", " Octosexagintillion", " Novemsexagintillion", " Septuagintillion", " Unseptuagintillion", " Duoseptuagintillion", " Tresseptuagintillion", " Quatuorseptuagintillion", " Quinquaseptuagintillion", " Sexaseptuagintillion", " Septenseptuagintillion", " Octoseptuagintillion", " Novemseptuagintillion", " Octogintillion", " Unoctogintillion", " Duooctogintillion", " Tresoctogintillion", " Quatuoroctogintillion", " Quinquaoctogintillion", " Sesoctogintillion", " Septemoctogintillion", " Octooctogintillion", " Novemoctogintillion", " Nonagintillion", " Unnonagintillion", " Duononagintillion", " Tresnonagintillion", " Quatuornonagintillion", " Quinquanonagintillion", " Sesnonagintillion", " Septemnonagintillion", " Octononagintillion", " Novemnonagintillion", " Centillion", " Uncentillion"];
+
+    var leng = 4;
+    var slic = 1;
+
+    for (var g = 0; g < visualOfIt.length; g++) {
+        if (visualOfIt.length <= visualLeng) {
+            if (leng < maxLeng) {
+                leng = maxLeng;
+            }
+
+            if (visualOfIt.length === leng) {
+                if (slic > 2) {
+                    visualOfIt = costOfIt.toString().slice(0, slic) + letterArray[letterArrayIndex];
+                    break;
+                } else {
+                    visualOfIt = costOfIt.toString().slice(0, slic) + "," + costOfIt.toString().slice(slic, 3) + letterArray[letterArrayIndex];
+                    break;
+                }
+            } else {
+                leng++;
+                slic++;
+            }
+        } else {
+            maxLeng += 3;
+            visualLeng += 3;
+            letterArrayIndex++;
+        }
+    }
+
+    return visualOfIt;
+}
+  
+  
+  
+
+  const volumeDates = Object.keys(volumeNumbers).map(volumeDate => {
+    let yearIndex = volumeDate.indexOf('.', 3);
+    return volumeDate.slice(0, yearIndex);
+  });
+  volumeDates.shift();
+  
+  let volumeNumbersValues = Object.values(volumeNumbers);
+  const volumeNumbersAll = [];
+  volumeNumbersValues.forEach((volumeNumber, idx) => {
+    if(idx === 0) return;
+    volumeNumbersAll.push(BigNumber(volumeNumber.exchange).minus(volumeNumbersValues[idx-1].exchange).toString());
+    
+
+  });
+  const slicedVolume = (simpleNumber(getBeforeDot(volumeNumbersAll[volumeNumbersAll.length -1])))
+
+  
 
   return (
     <Fragment>
     
     
       <StatsTitle className="rotate-puzzle">
-        <img src={images.puzzleswap} alt="puzzle swap" width="16px" height="16px" />
-        <span style={{marginLeft: '4px'}}>exchange stats | last 24 hours</span>
+        <img src={images.puzzleswap} alt="puzzle swap" width="50px" height="50px" />
+        <h2><span style={{marginLeft: '4px'}}>exchange stats | last 24 hours< br /></span></h2>
+        
+        <StatsInfoMain>
+          <span>number of trades: {tradesInLastTwentyFourHours.number} <br /></span>
+          {/* <span>Total volume <tab> {tradesInLastTwentyFourHours.number}</tab> <br /></span> */}
+        </StatsInfoMain>
+        <StatsInfoMain>
+        <span>Volume:  {slicedVolume} <br /></span>        
+        </StatsInfoMain>
+
+      
       </StatsTitle>
-
-      <StatsInfo>
-        number of trades: {tradesInLastTwentyFourHours.number}
-      </StatsInfo>
-
       <StatsGroupedInfoLeft>
         <div>
           <span style={{fontWeight: '600', fontSize: '0.95rem'}}>most traded pairs: </span>
@@ -201,7 +369,7 @@ export function Home({data, tradesInLastTwentyFourHours}) {
           }}
         >
           {
-            tradesInLastTwentyFourHours.pairs.slice(0, showLeftMore ? 10 : 3).map(([pair, time], idx) => {
+            tradesInLastTwentyFourHours.pairs.slice(0, /* showLeftMore ? 10 : */ 10).map(([pair, time], idx) => {
               return (
                 <li key={pair} className="home-stats" style={{margin: '4px', padding: '3px 0 1px 5px', letterSpacing: '0.5px'}}>
                   {idx+1}) {pair.toUpperCase()} - {time} times
@@ -210,9 +378,7 @@ export function Home({data, tradesInLastTwentyFourHours}) {
             })
           }
         </ul>
-        <InnerShowMoreButton onClick={() => setShowLeftMore(!showLeftMore)}>
-          {showLeftMore ? 'less' : 'more'}
-        </InnerShowMoreButton>
+
       </StatsGroupedInfoLeft>
 
 
@@ -234,7 +400,7 @@ export function Home({data, tradesInLastTwentyFourHours}) {
           }}
         >
           {
-            tradesInLastTwentyFourHours.tokens.slice(0, showRightMore ? 10 : 3).map(([token, time], idx) => {
+            tradesInLastTwentyFourHours.tokens.slice(0, /* showRightMore ? 10 : */ 10).map(([token, time], idx) => {
               return (
                 <li key={token} className="home-stats" style={{margin: '4px', padding: '3px 0 1px 5px', letterSpacing: '0.5px'}}>
                   {idx+1}) {token.toUpperCase()} - {time} times
@@ -243,11 +409,16 @@ export function Home({data, tradesInLastTwentyFourHours}) {
             })
           }
         </ul>
-        <InnerShowMoreButton style={{borderRadius: '0 0 0 30%'}} onClick={() => setShowRightMore(!showRightMore)}>
+
+        </StatsGroupedInfoRight>
+
+
+{/*       <InnerShowMoreButton style={{borderRadius: '0 0 0 30%'}} onClick={() => setShowRightMore(!showRightMore)}>
           {showRightMore ? 'less' : 'more'}
         </InnerShowMoreButton>
-      </StatsGroupedInfoRight>
-
+      <InnerShowMoreButton onClick={() => setShowLeftMore(!showLeftMore)}>
+          {showLeftMore ? 'less' : 'more'}
+        </InnerShowMoreButton>
       <ShowMoreButton
         onClick={() => {
           setTimeout(() => {
@@ -264,9 +435,56 @@ export function Home({data, tradesInLastTwentyFourHours}) {
         {
           showLeftMore || showRightMore ? 'less' : 'more'
         }
-      </ShowMoreButton>
-    
+      </ShowMoreButton> */}
 
+
+
+
+    
+    <MainWrapper>
+    <InfoTitle className="rotate-puzzle">
+          <img src={images.puzzleswap} alt="puzzle swap" width="15px" height="15px" display="flex"/>
+          <span style={{marginLeft: '4px'}}>Learn about Puzzleswap!</span>
+        </InfoTitle>
+      <InfoWrapper>
+      <Info>
+          <h2><a href="https://anna-nikolaeva.gitbook.io/puzzle-swap-guide/" style={{textDecoration: 'none', color: 'black'}}>Puzzle Swap Guide</a></h2>
+          <a href="https://anna-nikolaeva.gitbook.io/puzzle-swap-guide/">
+            read more...
+          </a>
+        </Info>
+      <Info>
+          <h2><a href="https://medium.com/@puzzleswap/supreme-puzzle-adjustment-spa-proposal-c515a5855cea" style={{textDecoration: 'none', color: 'black'}}>Supreme Puzzle Adjustment (SPA) proposal</a></h2>
+          <a href="https://medium.com/@puzzleswap/supreme-puzzle-adjustment-spa-proposal-c515a5855cea">
+            read more...
+          </a>
+        </Info>
+      <Info>
+          <h2><a href="https://medium.com/@puzzleswap/explaining-puzzle-aggregator-e0b0224384a8" style={{textDecoration: 'none', color: 'black'}}>Explaining Puzzle Aggregator</a></h2>
+          <a href="https://medium.com/@puzzleswap/explaining-puzzle-aggregator-e0b0224384a8">
+            read more...
+          </a>
+        </Info>
+        <Info>
+          <h2><a href="https://medium.com/@puzzleswap/puzzle-tokenomics-b08f3bbc42af" style={{textDecoration: 'none', color: 'black'}}>Puzzle Tokenomics</a></h2>
+          <a href="https://medium.com/@puzzleswap/puzzle-tokenomics-b08f3bbc42af">
+            read more...
+          </a>
+        </Info>
+        <Info>
+          <h2><a href="https://medium.com/@puzzleswap/explaining-the-power-of-mega-pools-6f9437b94d5e" style={{textDecoration: 'none', color: 'black'}}>Explaining the power of mega pools</a></h2>
+          <a href="https://medium.com/@puzzleswap/explaining-the-power-of-mega-pools-6f9437b94d5e">
+            read more...
+          </a>
+        </Info>
+        <Info>
+          <h2><a href="https://medium.com/@puzzleswap/puzzle-swap-%EF%B8%8F-roadmap-d8629c2dd166" style={{textDecoration: 'none', color: 'black'}}>Puzzle Swap 🗺️ Roadmap<br/></a></h2>
+          <a href="https://medium.com/@puzzleswap/puzzle-swap-%EF%B8%8F-roadmap-d8629c2dd166">
+            read more...
+          </a>
+        </Info>
+      </InfoWrapper>
+</MainWrapper>
 
       {/* farm balance down below */}
 

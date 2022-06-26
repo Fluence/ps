@@ -275,68 +275,6 @@ console.log(tokenData)
         </PuzzleInfoTitle>
         <div>
 
-        <div
-          style={{
-            fontFamily: 'sans-serif',
-            fontSize: '1rem',
-            borderRight: '1px solid #7075e9',
-            borderBottom: '1px solid #7075e9',
-            borderBottomRightRadius: '10px',
-            marginRight: '0.8rem',
-            marginLeft: '0.8rem',
-            letterSpacing: '2px'
-          }}
-        >
-          <div
-            style={{
-              width: '5rem',
-              backgroundColor: '#7075e9',
-              color: 'white',
-              fontSize: '0.9rem',
-              fontWeight: 'bold',
-              padding: '0.2rem',
-              borderBottomRightRadius: '5px'
-            }}
-          >
-            supply
-          </div>
-          <div 
-            style={{
-              padding: '0.70rem'
-            }}
-          >
-            485,000 (hard coded) <a href="https://wavesexplorer.com/assets/HEB8Qaw9xrWpWs8tHsiATYGBWDBtP2S7kcPALrMu43AS" style={{color: '#7075e9', fontWeight: 'bold'}}>explorer</a> 
-          </div>
-        </div>
-
-          <div
-            style={{
-              fontFamily: 'sans-serif',
-              fontSize: '1rem',
-              borderLeft: '1px solid #7075e9',
-              borderBottom: '1px solid #7075e9',
-              marginRight: '0.8rem',
-              marginLeft: '0.8rem',
-              letterSpacing: '2px'
-            }}
-          >
-            <div
-              style={{
-                width: '5rem',
-                backgroundColor: '#7075e9',
-                color: 'white',
-                fontSize: '0.9rem',
-                fontWeight: 'bold',
-                padding: '0.2rem',
-                borderBottomRightRadius: '5px'
-              }}
-            >
-              id
-            </div>
-            <TokenId>
-              HEB8Qaw9xrWpWs8tHsiATYGBWDBtP2S7kcPALrMu43AS
-            </TokenId>
-          </div>
 
           <div
             style={{
@@ -350,7 +288,7 @@ console.log(tokenData)
               letterSpacing: '2px'
             }}
           >
-            <div
+{/*             <div
               style={{
                 width: '5rem',
                 backgroundColor: '#7075e9',
@@ -361,8 +299,8 @@ console.log(tokenData)
                 borderBottomRightRadius: '5px'
               }}
             >
-              pools
-            </div>
+              Links
+            </div> */}
             <div 
               style={{
                 padding: '0.70rem',
@@ -370,10 +308,10 @@ console.log(tokenData)
                 justifyContent: 'space-between'
               }}
             >
-              <a href="https://puzzleswap.org/farms1" style={{color: '#7075e9', fontWeight: 'bold'}}>farms1</a> 
-              <a href="https://puzzleswap.org/farms2" style={{color: '#7075e9', fontWeight: 'bold'}}>farms2</a> 
-              <a href="https://puzzleswap.org/defi" style={{color: '#7075e9', fontWeight: 'bold'}}>defi</a> 
-              <a href="https://puzzleswap.org/puzzle" style={{color: '#7075e9', fontWeight: 'bold'}}>puzzle</a> 
+              <a href="https://puzzleswap.org/trade" style={{color: '#7075e9', fontWeight: 'bold'}}>trade</a> 
+              <a href="https://puzzleswap.org/invest" style={{color: '#7075e9', fontWeight: 'bold'}}>invest</a> 
+              <a href="https://puzzleswap.org/stake" style={{color: '#7075e9', fontWeight: 'bold'}}>stake</a> 
+              
             </div>
           </div>
 
@@ -424,7 +362,7 @@ console.log(tokenData)
           loading ?
 
             (
-              <div style={{width: "100%", height: "130px", textAlign: 'center'}}>
+              <div style={{width: "100%", height: "100px", textAlign: 'center'}}>
                 <img src={images.puzzleswap} className="rotate-token-logo" alt="" style={{borderRadius: "50%"}} width="100px" height="100px" />
               </div>
             ) :
@@ -442,7 +380,7 @@ console.log(tokenData)
 
                 <PuzzleInfoTitle className="rotate-puzzle" style={{marginTop: '3rem'}}>
                   <img src={images.puzzleswap} alt="puzzle swap" width="16px" height="16px" />
-                  <span style={{marginLeft: '4px'}}>TOP $PUZZLE HODLERS</span>
+                  <span style={{marginLeft: '4px'}}>Richlist</span>
                 </PuzzleInfoTitle>
 
 
@@ -486,42 +424,10 @@ console.log(tokenData)
         }
 
 
-      <PuzzleInfoTitle className="rotate-puzzle" style={{marginBottom: '1rem', marginTop: '3rem'}}>
-        <img src={images.puzzleswap} alt="puzzle swap" width="16px" height="16px" />
-        <span style={{marginLeft: '4px'}}>$PUZZLE NEWS</span>
-      </PuzzleInfoTitle>
+
 
       <InfoWrapper>
-        <Info>
-          <h1><a href="https://medium.com/@puzzleswap/puzzle-tokenomics-b08f3bbc42af" style={{textDecoration: 'none', color: 'black'}}>Puzzle Tokenomics</a></h1>
-          <a href="https://medium.com/@puzzleswap/puzzle-tokenomics-b08f3bbc42af">
-            go to read
-          </a>
-        </Info>
-        <Info>
-          <h1><a href="https://medium.com/@puzzleswap/explaining-the-power-of-mega-pools-6f9437b94d5e" style={{textDecoration: 'none', color: 'black'}}>Explaining the power of mega pools</a></h1>
-          <a href="https://medium.com/@puzzleswap/explaining-the-power-of-mega-pools-6f9437b94d5e">
-            go to read
-          </a>
-        </Info>
-        <Info>
-          <h1><a href="https://medium.com/@puzzleswap/liquidity-providing-is-live-at-puzzle-swap-5ffaed38e9f0" style={{textDecoration: 'none', color: 'black'}}>Liquidity providing is live at Puzzle Swap</a></h1>
-          <a href="https://medium.com/@puzzleswap/liquidity-providing-is-live-at-puzzle-swap-5ffaed38e9f0">
-            go to read
-          </a>
-        </Info>
-        <Info>
-          <h1><a href="https://medium.com/@puzzleswap/the-first-defi-mega-pool-on-waves-is-live-90fe120a8217" style={{textDecoration: 'none', color: 'black'}}>The first DeFi mega pool on Waves is live</a></h1>
-          <a href="https://medium.com/@puzzleswap/the-first-defi-mega-pool-on-waves-is-live-90fe120a8217">
-            go to read
-          </a>
-        </Info>
-        <Info>
-          <h1><a href="https://medium.com/@puzzleswap/puzzle-swap-%EF%B8%8F-roadmap-d8629c2dd166" style={{textDecoration: 'none', color: 'black'}}>Puzzle Swap 🗺️ Roadmap</a></h1>
-          <a href="https://medium.com/@puzzleswap/puzzle-swap-%EF%B8%8F-roadmap-d8629c2dd166">
-            go to read
-          </a>
-        </Info>
+ 
       </InfoWrapper>
 
 

@@ -29,19 +29,19 @@ export function Header() {
     <HeaderWrapper>
       <li style={{cursor: 'pointer', letterSpacing: '2px', fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: '0.9em'}}>
         <Link to="/" className="header-menu">
-          HOME
+        HOME
         </Link>
       </li>
 
       <li style={{cursor: 'pointer', letterSpacing: '2px', fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: '0.9em'}}>
-        <Link to="/trades" className="header-menu">
-          TRADES
+        <Link to="/aggregator" className="header-menu">
+        TRADES
         </Link>
       </li>
 
       <li style={{cursor: 'pointer', letterSpacing: '2px', fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: '0.9em'}}>
         <Link to="/liquidity" className="header-menu">
-          LIQUIDITY
+        LIQUIDITY
         </Link>
       </li>
 
@@ -54,12 +54,13 @@ export function Header() {
 
       <li style={{cursor: 'pointer', letterSpacing: '2px', fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: '0.9em'}}>
         <Link to="/stats" className="header-menu">
-          STATS
+        STATS
         </Link>
       </li>
+
       <li style={{cursor: 'pointer', letterSpacing: '2px', fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: '0.9em'}}>
         <Link to="/puzzle" className="header-menu">
-          PUZZLE
+        PUZZLE
         </Link>
       </li>
     </HeaderWrapper>
