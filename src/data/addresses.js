@@ -42,14 +42,14 @@ export const smartContractAddress12 = "3PEStCRPQuW3phthTtQ5upGeb4WZ47kssyM"
 
 //dapps list
 export const aggPools = {
-  swopusdn: "3PAtzncjJGWRpCtkR55wAzcfZ9fubMeA4JU",
-  swopusdn2: "3PBHyEwmERR1CEkrTNbPj2bgyisTfPRqfee"
+  swopxtn: "3PAtzncjJGWRpCtkR55wAzcfZ9fubMeA4JU",
+  swopxtn2: "3PBHyEwmERR1CEkrTNbPj2bgyisTfPRqfee"
 };
 
 //arrays with farm token addresses key/value
 export const farmTokenAddresses = {
   egg: 'C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS',
-  usdn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
+  xtn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
   duxplorer: 'EfdcPXw7o7rrrPWmMBr2sa66Dk95n56622ngujbaGhye',
   math: 'B543bkZcZNo5GrUnd5fxB6EwkiJhAVyKCkPn5nWzZC2s',
   turtle: '5bcAh1r6ydrpk44FEmrnmJQjumgKo3NKEEsyfgmZYwxC',
@@ -62,7 +62,7 @@ export const farmTokenAddresses = {
 
 export const farmTokenAddresses2 = {
   'C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS': 'egg',
-  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'usdn',
+  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'xtn',
   'EfdcPXw7o7rrrPWmMBr2sa66Dk95n56622ngujbaGhye': 'duxplorer',
   'B543bkZcZNo5GrUnd5fxB6EwkiJhAVyKCkPn5nWzZC2s': 'math',
   '5bcAh1r6ydrpk44FEmrnmJQjumgKo3NKEEsyfgmZYwxC': 'turtle',
@@ -75,7 +75,7 @@ export const farmTokenAddresses2 = {
 
 export const farm2TokenAddresses = {
   egg: 'C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS',
-  usdn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
+  xtn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
   endo: '5HGPPLj58XUx3ryMgkASJoqYq33zwBbTMf1CGxfKw6jp',
   marvin: 'yDf4UTg4DS75sCNP7oC1HraTN4KHtqmd6WueTid4PF1',
   eggmoon: '2R57nL7ftpuwbgdprcmAeA9i7ykLH6A4wzLkZHWPiHKc',
@@ -87,7 +87,7 @@ export const farm2TokenAddresses = {
 
 export const farm2TokenAddresses2 = {
   'C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS': 'egg',
-  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'usdn',
+  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'xtn',
   '5HGPPLj58XUx3ryMgkASJoqYq33zwBbTMf1CGxfKw6jp': 'endo',
   'yDf4UTg4DS75sCNP7oC1HraTN4KHtqmd6WueTid4PF1': 'marvin',
   '2R57nL7ftpuwbgdprcmAeA9i7ykLH6A4wzLkZHWPiHKc': 'eggmoon',
@@ -102,7 +102,7 @@ export const farm2TokenAddresses2 = {
 export const farm3TokenAddresses = {
   'WAVES': 'waves',
   egg: 'C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS',
-  usdn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
+  xtn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
   usdt: '34N9YcEETLWn93qYQ64EsP1x89tSruJU44RrEMSXXEPJ',
   usdtlambo: '4K35syPfY2tYrNWzjh1vbmH39qE4qPV7SwLwekrzD82r',
   nsbt: '6nSpVyNH7yM69eg446wrQR94ipbbcmZMU1ENPwanC97g',
@@ -115,7 +115,7 @@ export const farm3TokenAddresses = {
 export const farm3TokenAddresses2 = {
   'WAVES': 'waves',
   'C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS': 'egg',
-  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'usdn',
+  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'xtn',
   '34N9YcEETLWn93qYQ64EsP1x89tSruJU44RrEMSXXEPJ': 'usdt',
   '4K35syPfY2tYrNWzjh1vbmH39qE4qPV7SwLwekrzD82r': 'usdtlambo',
   '6nSpVyNH7yM69eg446wrQR94ipbbcmZMU1ENPwanC97g': 'nsbt',
@@ -127,41 +127,41 @@ export const farm3TokenAddresses2 = {
 
 //puzzle parent pool
 export const farm4TokenAddresses = {
-  usdn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
+  xtn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
   usdt: '34N9YcEETLWn93qYQ64EsP1x89tSruJU44RrEMSXXEPJ',
   puzzle: 'HEB8Qaw9xrWpWs8tHsiATYGBWDBtP2S7kcPALrMu43AS',
 };
 export const farm4TokenAddresses2 = {
-  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'usdn',
+  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'xtn',
   '34N9YcEETLWn93qYQ64EsP1x89tSruJU44RrEMSXXEPJ': 'usdt',
   'HEB8Qaw9xrWpWs8tHsiATYGBWDBtP2S7kcPALrMu43AS': 'puzzle',
 };
 
 //race pool
 export const farm5TokenAddresses = {
-  usdn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
+  xtn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
   egg: 'C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS',
   race: 'D4TPjtzpsDEJFS1pUAkvh1tJJJMNWGcSrds9sveBoQka',
 };
 export const farm5TokenAddresses2 = {
-  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'usdn',
+  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'xtn',
   'C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS': 'egg',
   'D4TPjtzpsDEJFS1pUAkvh1tJJJMNWGcSrds9sveBoQka': 'race',
 };
 
 //Egg Pool
 export const farm6TokenAddresses = {
-  usdn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
+  xtn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
   egg: 'C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS',
 };
 export const farm6TokenAddresses2 = {
-  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'usdn',
+  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'xtn',
   'C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS': 'egg',
 };
 
 //Winter Pool
 export const farm7TokenAddresses = {
-  usdn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
+  xtn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
   usdt: '34N9YcEETLWn93qYQ64EsP1x89tSruJU44RrEMSXXEPJ',
   eurn: 'DUk2YTxhRoAqMJLus4G2b3fR8hMHVh6eiyFx5r29VR6t',
   usdc: '6XtHjpXbs9RRJP2Sr9GUyVqzACcby9TkThHXnjVC5CDJ',
@@ -169,7 +169,7 @@ export const farm7TokenAddresses = {
   puzzle: 'HEB8Qaw9xrWpWs8tHsiATYGBWDBtP2S7kcPALrMu43AS',
 };
 export const farm7TokenAddresses2 = {
-  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'usdn',
+  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'xtn',
   '34N9YcEETLWn93qYQ64EsP1x89tSruJU44RrEMSXXEPJ': 'usdt',
   'DUk2YTxhRoAqMJLus4G2b3fR8hMHVh6eiyFx5r29VR6t': 'eurn',
   '6XtHjpXbs9RRJP2Sr9GUyVqzACcby9TkThHXnjVC5CDJ': 'usdc',
@@ -182,36 +182,36 @@ export const farm8TokenAddresses = {
   wx: 'Atqv59EYzjFGuitKVnMRk6H8FukjoV3ktPorbEys25on',
   wct: 'DHgwrRvVyqJsepd32YbBqUeDH4GJ1N984X8QoekjgH8J',
   west: '4LHHvYGNKJUg5hj65aGD5vgScvCBmLpdRFtjokvCjSL8',
-  usdn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
+  xtn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
 };
 export const farm8TokenAddresses2 = {
   'Atqv59EYzjFGuitKVnMRk6H8FukjoV3ktPorbEys25on': 'wx',
   'DHgwrRvVyqJsepd32YbBqUeDH4GJ1N984X8QoekjgH8J': 'wct',
   '4LHHvYGNKJUg5hj65aGD5vgScvCBmLpdRFtjokvCjSL8': 'west',
-  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'usdn',
+  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'xtn',
 };
 
 //Muna BNB Pool
 export const farm9TokenAddresses = {
-  usdn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
+  xtn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
   bnb: '5UYBPpq4WoU5n4MwpFkgJnW3Fq4B1u3ukpK33ik4QerR',
   muna: 'eCNH1aqUnocub8PbNsxLNvZWGeVE98L2Crw3cGY6Gq2',
 };
 export const farm9TokenAddresses2 = {
-  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'usdn',
+  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'xtn',
   '5UYBPpq4WoU5n4MwpFkgJnW3Fq4B1u3ukpK33ik4QerR': 'bnb',
   'eCNH1aqUnocub8PbNsxLNvZWGeVE98L2Crw3cGY6Gq2': 'muna',
 };
 
 //Ducklization Pool
 export const farm10TokenAddresses = {
-  usdn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
+  xtn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
   sheg: 'A2hcw6RV23Fc8Y8FNfV35Sq5QeS9Tgp6n8hbrESiRvXX',
   waves: 'waves',
   egg: 'C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS',
 };
 export const farm10TokenAddresses2 = {
-  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'usdn',
+  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'xtn',
   'A2hcw6RV23Fc8Y8FNfV35Sq5QeS9Tgp6n8hbrESiRvXX': 'sheg',
   'WAVES': 'waves',
   'C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS': 'egg',
@@ -219,13 +219,13 @@ export const farm10TokenAddresses2 = {
 
 //Ten Pool
 export const farm11TokenAddresses = {
-  usdn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
+  xtn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
   btc: '8LQW8f7P5d5PZM7GtZEBgaqRPGSzS3DfPuiXrURJ4AJS',
   waves: 'waves',
   eth: '474jTeYx2r2Va35794tCScAXWJG9hU2HcgxzMowaZUnu',
 };
 export const farm11TokenAddresses2 = {
-  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'usdn',
+  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'xtn',
   '8LQW8f7P5d5PZM7GtZEBgaqRPGSzS3DfPuiXrURJ4AJS': 'btc',
   'WAVES': 'waves',
   '474jTeYx2r2Va35794tCScAXWJG9hU2HcgxzMowaZUnu': 'eth',
@@ -235,19 +235,19 @@ export const farm11TokenAddresses2 = {
 export const farm12TokenAddresses = {
   snsbt: '8wUmN9Y15f3JR4KZfE81XLXpkdgwnqoBNG6NmocZpKQx',
   nsbt: '6nSpVyNH7yM69eg446wrQR94ipbbcmZMU1ENPwanC97g',
-  usdn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
+  xtn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
 };
 export const farm12TokenAddresses2 = {
   '8wUmN9Y15f3JR4KZfE81XLXpkdgwnqoBNG6NmocZpKQx': 'snsbt',
   '6nSpVyNH7yM69eg446wrQR94ipbbcmZMU1ENPwanC97g': 'nsbt',
-  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'usdn',
+  'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 'xtn',
 };
 
 
 export const allFarmTokenAddresses = {
   'WAVES': 'waves',
   egg: 'C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS',
-  usdn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
+  xtn: 'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p',
   duxplorer: 'EfdcPXw7o7rrrPWmMBr2sa66Dk95n56622ngujbaGhye',
   math: 'B543bkZcZNo5GrUnd5fxB6EwkiJhAVyKCkPn5nWzZC2s',
   turtle: '5bcAh1r6ydrpk44FEmrnmJQjumgKo3NKEEsyfgmZYwxC',
@@ -289,7 +289,7 @@ export const allFarmTokenAddresses = {
 export const tokenDecimals = {
   waves: 8,
   egg: 8,
-  usdn: 6,
+  xtn: 6,
   duxplorer: 8,
   math: 8,
   turtle: 8,
@@ -333,7 +333,7 @@ export const tokenDecimalsId = {
   waves: 8,
   //egg
   'C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS': 8,
-  //usdn
+  //xtn
   'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p': 6,
   //duxplorer
   'EfdcPXw7o7rrrPWmMBr2sa66Dk95n56622ngujbaGhye': 8,
